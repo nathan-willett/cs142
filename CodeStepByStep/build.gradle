@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'com.cs141.codestepbystep'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Example: test framework dependency
+    testImplementation 'junit:junit:4.13.2'
+
+    // Include the local JAR file
+    implementation files('../libs/DrawingPanel.jar')
+
+    // Other dependencies, if any
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        // Include resources directory if you have resources
+        // resources {
+        //     srcDir 'resources'
+        // }
+    }
+}

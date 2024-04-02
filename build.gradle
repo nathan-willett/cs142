@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.10' // Add the JavaFX plugin
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    
+    version = '1.0'
+
+    sourceCompatibility = JavaVersion.VERSION_21 // Set source compatibility
+    targetCompatibility = JavaVersion.VERSION_21 // Set target compatibility
+
+    dependencies {
+        //compileOnly 'javax:javaee-api:8.0'
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+    }
+
+    // Configure JavaFX plugin
+    javafx {
+        version = "17" // Specify the JavaFX version you are using
+        modules = [ 'javafx.controls', 'javafx.fxml' ] // List the JavaFX modules you need
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src']
+            }
+        }
+    }
+}
