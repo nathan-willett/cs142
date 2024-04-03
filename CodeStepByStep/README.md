@@ -17,7 +17,7 @@ Meanwhile, the compiled output files will be generated in `{subproject}\build\cl
 
 The `DrawingPanel` class, used for graphical operations, is archived in the `cs141/Archive/graphics` directory. The compiled class is included in a JAR file located in the `lib` directory. If you need to modify the `DrawingPanel` class:
 
-1. Navigate to `cs141/Archive/graphics`.
+1. Navigate to `cs142/Archive/graphics`.
 2. Make the necessary changes to `DrawingPanel.java`.
 3. Recompile the class: `javac DrawingPanel.java`.
 4. Update the JAR file in `lib`: `jar cvf ../lib/DrawingPanel.jar graphics/`.
@@ -25,14 +25,14 @@ The `DrawingPanel` class, used for graphical operations, is archived in the `cs1
 
 **PLEASE NOTE**
 `DrawingPanel.jar` exists in the following locations:
-- `cs141\CodeStepByStep\libs`
-- `cs141\ExampleCodeByWeek\libs`
+- `cs142\CodeStepByStep\libs`
+- `cs142\ExampleCodeByWeek\libs`
 
 Should `DrawingPanel.jar` require any modifications, all locations listed above must receive the new version of the file. To check compatibility, please test the programs listed below.
 
 `DrawingPanel.jar` is used by the following programs:
-- `cs141\CodeStepByStep\src\SmallProblems1B__1_8\DrawCar.java`
-- `cs141\ExampleCodeByWeek\src\week2\Drawing.java`
+- `cs142\CodeStepByStep\src\SmallProblems1B__1_8\DrawCar.java`
+- `cs142\ExampleCodeByWeek\src\week2\Drawing.java`
 
 ## Dependency Management
 

@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.cs141.codestepbystep'
+group 'com.cs142.codestepbystep'
 version '1.0'
 
 repositories {
@@ -24,9 +24,5 @@ sourceSets {
         java {
             srcDir 'src'
         }
-        // Include resources directory if you have resources
-        // resources {
-        //     srcDir 'resources'
-        // }
     }
 }
