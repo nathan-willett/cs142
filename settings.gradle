@@ -1,2 +1,2 @@
 rootProject.name = 'CS142'
-include '01_CodeStepByStep', '02_ExampleCodeByWeek', '03_LiangSourceCodeExamples'
+include '01_CodeStepByStep', '02_ExampleCodeByWeek', '03_LiangSourceCodeExamples', '04_Projects/project1', '04_Projects/project2', '04_Projects/project3', '04_Projects/project4', '04_Projects/project5', '05_FinalProject'
