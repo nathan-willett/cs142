@@ -18,7 +18,6 @@ subprojects {
     targetCompatibility = JavaVersion.VERSION_21 // Set target compatibility
 
     dependencies {
-        //compileOnly 'javax:javaee-api:8.0'
         implementation fileTree(dir: 'libs', include: ['*.jar'])
     }
 

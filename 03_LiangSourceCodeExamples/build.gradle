@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.cs141.liangsourcecodeexamples'
+group 'com.cs142.03_liangsourcecodeexamples'
 version '1.0'
 
 repositories {

@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.cs142.codestepbystep'
+group 'com.cs142.01_codestepbystep'
 version '1.0'
 
 repositories {
