@@ -1,2 +1,21 @@
 rootProject.name = 'CS142'
-include '01_CodeStepByStep', '02_ExampleCodeByWeek', '03_LiangSourceCodeExamples', '04_Projects/project1', '04_Projects/project2', '04_Projects/project3', '04_Projects/project4', '04_Projects/project5', '05_FinalProject'
+
+// Including all subprojects
+include '01_CodeStepByStep'
+include '02_ExampleCodeByWeek'
+include '03_LiangSourceCodeExamples'
+include '04_Projects:project1'
+include '04_Projects:project2'
+include '04_Projects:project3'
+include '04_Projects:project4'
+include '04_Projects:project5'
+include '05_FinalProject'
+
+// Set project directories for projects nested inside '04_Projects'
+project(':04_Projects:project1').projectDir = new File('04_Projects/project1')
+project(':04_Projects:project2').projectDir = new File('04_Projects/project2')
+project(':04_Projects:project3').projectDir = new File('04_Projects/project3')
+project(':04_Projects:project4').projectDir = new File('04_Projects/project4')
+project(':04_Projects:project5').projectDir = new File('04_Projects/project5')
+
+// The '05_FinalProject' directory is already correctly structured, so no need to set the project directory if it's at the root level

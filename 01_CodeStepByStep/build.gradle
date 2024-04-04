@@ -22,7 +22,8 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDirs = ['src', '01_CodeStepByStep/src', '02_ExampleCodeByWeek/src', '03_LiangSourceCodeExamples/src']
+            include '**/*.java'
         }
     }
 }

@@ -22,11 +22,9 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDirs = ['src']
+            include '**/*.java'
         }
-        // Include resources directory if you have resources
-        // resources {
-        //     srcDir 'resources'
-        // }
     }
 }
+
