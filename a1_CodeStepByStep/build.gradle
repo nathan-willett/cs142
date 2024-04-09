@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.cs142.01_codestepbystep'
+group 'com.cs142.a1_codestepbystep'
 version '1.0'
 
 repositories {
@@ -22,8 +22,7 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDirs = ['src', '01_CodeStepByStep/src', '02_ExampleCodeByWeek/src', '03_LiangSourceCodeExamples/src']
-            include '**/*.java'
+            srcDirs = ['src']
         }
     }
 }

@@ -1,4 +1,4 @@
-package a1_CodeStepByStep.src.w1_lab1___4_2;
+package w1_lab1___4_2;
 
 /* 
 Write a class called Point that stores an x and y coordinate. Your Point class should have the following methods:
@@ -13,10 +13,10 @@ distanceFromOrigin()	    returns the distance between a Point and the origin, (0
 
 Use the following formula to compute the distance between two points.
 */
+
 public class Point {
-    public static void main(String[] args) {
-        
-    }
+    private int x; // Declare x coordinate
+    private int y; // Declare y coordinate
 
     public Point(int x, int y) {
         this.x = x;
@@ -32,18 +32,19 @@ public class Point {
     }
 
     public void setX(int newX) {
-        
+        this.x = newX; // Set x to the new value
     }
 
     public void setY(int newY) {
-
+        this.y = newY; // Set y to the new value
     }
 
     public void translate(int dx, int dy) {
-
+        this.x += dx; // Move x by dx
+        this.y += dy; // Move y by dy
     }
 
     public double distanceFromOrigin() {
-
+        return Math.sqrt(x * x + y * y); // Calculate distance from the origin
     }
 }

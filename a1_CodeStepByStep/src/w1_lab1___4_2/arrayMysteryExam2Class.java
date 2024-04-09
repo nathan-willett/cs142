@@ -1,4 +1,4 @@
-package a1_CodeStepByStep.src.w1_lab1___4_2;
+package w1_lab1___4_2;
 
 import java.util.Arrays;
 
