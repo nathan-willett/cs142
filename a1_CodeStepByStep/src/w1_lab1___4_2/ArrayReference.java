@@ -1,4 +1,4 @@
-package src.w1_lab1___4_2;
+package a1_CodeStepByStep.src.w1_lab1___4_2;
 
 public class ArrayReference {
     public static void main(String[] args) {

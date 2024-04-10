@@ -1,4 +1,4 @@
-package w1_lab1___4_2;
+package a1_CodeStepByStep.src.w1_lab1___4_2;
 
 /* 
 Write a class called Point that stores an x and y coordinate. Your Point class should have the following methods:
