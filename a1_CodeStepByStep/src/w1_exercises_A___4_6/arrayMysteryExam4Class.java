@@ -1,4 +1,4 @@
-package w1_exercises_A___4_6;
+package a1_CodeStepByStep.src.w1_exercises_A___4_6;
 
 import java.util.Arrays;
 

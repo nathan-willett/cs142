@@ -1,8 +1,9 @@
-package w1_exercises_A___4_6;
+package a1_CodeStepByStep.src.w1_exercises_A___4_6;
 
 import java.util.Arrays;
 
 // The following program produces 4 lines of output. Write each line of output below as it would appear on the console.
+
 public class ReferenceMystery1 {
     public static void main(String[] args) {
         int y = 1;

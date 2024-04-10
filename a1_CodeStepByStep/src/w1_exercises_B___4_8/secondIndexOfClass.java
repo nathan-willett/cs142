@@ -1,7 +1,6 @@
-package w1_exercises_B___4_8;
+package a1_CodeStepByStep.src.w1_exercises_B___4_8;
 
-/*
-Write a method named secondIndexOf that returns the index of the second occurrence of a particular value in an 
+/* Write a method named secondIndexOf that returns the index of the second occurrence of a particular value in an 
 array of integers. If the value does not appear in the array at least twice, you should return -1. For example, 
 if an array called list stores the following values:
 
