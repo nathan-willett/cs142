@@ -10,6 +10,7 @@ package a2_ExampleCodeByWeek.src.week2;
 // Likewise, when an element is removed the list adjusts itself so that
 // there are no empty indexes. 
 
+
 import java.util.*;
 
 public class ArrayIntList {
