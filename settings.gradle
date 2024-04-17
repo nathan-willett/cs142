@@ -7,16 +7,16 @@ include 'a3_LiangSourceCodeExamples'
 include 'a4_Projects:project1'
 include 'a4_Projects:project2'
 include 'a4_Projects:project3'
-include 'a4_Projects:project4'
-include 'a4_Projects:project5'
+// include 'a4_Projects:project4'
+// include 'a4_Projects:project5'
 include 'a5_FinalProject'
 
 // Set project directories for projects nested inside 'a4_Projects'
 project(':a4_Projects:project1').projectDir = new File('a4_Projects/project1')
 project(':a4_Projects:project2').projectDir = new File('a4_Projects/project2')
 project(':a4_Projects:project3').projectDir = new File('a4_Projects/project3')
-project(':a4_Projects:project4').projectDir = new File('a4_Projects/project4')
-project(':a4_Projects:project5').projectDir = new File('a4_Projects/project5')
+// project(':a4_Projects:project4').projectDir = new File('a4_Projects/project4')
+// project(':a4_Projects:project5').projectDir = new File('a4_Projects/project5')
 
 // Assuming a5_FinalProject and other top-level projects follow the conventional layout,
 // so no additional projectDir configuration is necessary for them.

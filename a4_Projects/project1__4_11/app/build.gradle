@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'project1.App'
+    mainClass = 'project1.SortedIntListTest'
 }
 
 tasks.named('test') {
