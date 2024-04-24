@@ -64,7 +64,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.security.AccessControlException;
 import java.security.Permission;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -116,7 +115,6 @@ import javax.swing.Timer;
 import javax.swing.UIManager;
 
 
-@SuppressWarnings({"unchecked", "deprecation"})
 public class CritterMain {
     public static void main(String[] args) {
         CritterGui.createGui();
@@ -146,7 +144,6 @@ class CritterGui implements ActionListener, Observer, WindowListener {
     public static final boolean DEFAULT_DEBUG = false;
 
     private static final String TITLE = "CSE 142 Critters";
-    private static final long serialVersionUID = 0;
     private static final int DELAY = 100; // default MS between redraws
     private static final int MAX_CLASS_NAME_LENGTH = 24;
     
@@ -227,7 +224,6 @@ class CritterGui implements ActionListener, Observer, WindowListener {
         this(model, false, false);
     }
 
-    @SuppressWarnings("removal")
     public CritterGui(CritterModel model, boolean network, boolean secure) {
         this.model = model;
         model.addObserver(this);
@@ -245,16 +241,6 @@ class CritterGui implements ActionListener, Observer, WindowListener {
             }
         }
 
-        // important not to store security manager anywhere as a field;
-        // prevent evil hands from getting a reference to it
-        final SecurityManager mgr = new CritterSecurityManager();
-        if (secure) {
-            try {
-                model.lock(mgr);
-                System.setSecurityManager(mgr);
-            } catch (SecurityException e) {}
-        }
-
         // set up network listeners
         networkSenderListener = new CritterNetworkManager();
         networkSenderListener.getReceiveEvent().addObserver(this);
@@ -268,7 +254,7 @@ class CritterGui implements ActionListener, Observer, WindowListener {
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         // add the animation timer
-        UberTimer timer = new UberTimer(mgr); //...;
+        UberTimer timer = new UberTimer(); //...;
         timer.setCoalesce(true);
 
         // east panel to store critter class info
@@ -391,7 +377,7 @@ class CritterGui implements ActionListener, Observer, WindowListener {
 
         // enable or disable background colors behind critters
         panel.setBackgroundColors(backgroundColors.isSelected());
-        model.setDebug(debug.isSelected(), mgr);
+        model.setDebug(debug.isSelected());
 
         // create frame and do layout
         frame = new JFrame();
@@ -426,15 +412,10 @@ class CritterGui implements ActionListener, Observer, WindowListener {
     private class UberTimer extends Timer implements ActionListener, KeyListener, ChangeListener {
         private static final long serialVersionUID = 0;
         
-        @SuppressWarnings("removal")
-        private SecurityManager mgr;
-        
-        @SuppressWarnings("removal")
-        public UberTimer(SecurityManager mgr) {
+        public UberTimer() {
             super(DELAY, CritterGui.this);
             this.removeActionListener(CritterGui.this);
             this.addActionListener(this);
-            this.mgr = mgr;
         }
         
         public void actionPerformed(ActionEvent e) {
@@ -447,7 +428,7 @@ class CritterGui implements ActionListener, Observer, WindowListener {
                 go.requestFocus();
             } else if (src == this || (src == tick && !this.isRunning())) {
                 try {
-                    model.update(mgr);
+                    model.update();
                 } catch (CritterModel.BuggyCritterException ex) {
                     this.stop();
                     Throwable cause = ex.getCause();
@@ -465,7 +446,7 @@ class CritterGui implements ActionListener, Observer, WindowListener {
                 }
             } else if (src == reset) {
                 try {
-                    model.reset(mgr);
+                    model.reset();
                 } catch (CritterModel.BuggyCritterException ex) {
                     this.stop();
                     Throwable cause = ex.getCause();
@@ -481,7 +462,7 @@ class CritterGui implements ActionListener, Observer, WindowListener {
                             + "See the console for more details about the error.");
                 }
             } else if (src == debug) {
-                model.setDebug(debug.isSelected(), mgr);
+                model.setDebug(debug.isSelected());
                 setMovesText();
                 panel.repaint();
             }
@@ -1278,14 +1259,14 @@ class CritterClassVerifier {
         }
     }
 
-    @SuppressWarnings({"deprecation", "removal"})
+    @SuppressWarnings({"removal"})
     public static CritterGui initialSettings() {
         boolean applet = false;
-        try {
-            System.getProperty("user.name");  // just try to get something that applets wouldn't allow
-        } catch (AccessControlException e) {
-            applet = true;
-        }
+        // try {
+        //     System.getProperty("user.name");  // just try to get something that applets wouldn't allow
+        // } catch (AccessControlException e) {
+        //     applet = true;
+        // }
 
         List<String> names = new ArrayList<String>();
         names.add("Width");
@@ -1491,12 +1472,6 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
 
     // Adds the given number of critters of the given type to the simulation.
     public synchronized void add(int number, Class<? extends Critter> critterClass) {
-        add(number, critterClass, null);
-    }
-    
-    @SuppressWarnings("removal")
-    public synchronized void add(int number, Class<? extends Critter> critterClass, SecurityManager mgr) {
-        mutateCheck(mgr);
         
         // count # of critters of each class
         String className = critterClass.getName();
@@ -1715,22 +1690,14 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
     //     return Collections.unmodifiableList(critterList).iterator();
     // }
     
-    @SuppressWarnings("removal")
-    public void lock(SecurityManager mgr) {
+    public void lock() {
         if (isLocked()) {
             throw new CritterSecurityException("Cannot re-lock an already locked model");
         }
-        security = mgr;
     }
     
     // helper so that the panel can move critters around from x1,y1 to x2,y2
     public synchronized boolean move(int x1, int y1, int x2, int y2) {
-        return move(x1, y1, x2, y2, null);
-    }
-    
-    @SuppressWarnings("removal")
-    public synchronized boolean move(int x1, int y1, int x2, int y2, SecurityManager mgr) {
-        mutateCheck(mgr);
         
         if (!isDebug()) {
             return false;
@@ -1787,12 +1754,6 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
 
     // Restarts the model and reloads the critters.
     public synchronized void reset() {
-        reset(null);
-    }
-    
-    @SuppressWarnings("removal")
-    public synchronized void reset(SecurityManager mgr) {
-        mutateCheck(mgr);
         
         createRandomFood();
         
@@ -1847,7 +1808,7 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
             }
 
             // add them back
-            add(count, critterClass, mgr);
+            add(count, critterClass);
         }
         
         // reset class-based state (hmm, is this redundant with the above?)
@@ -1862,12 +1823,6 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
 
     // Removes all critters of the given type from the simulation.
     public synchronized void removeAll(String className) {
-        removeAll(className, null);
-    }
-    
-    @SuppressWarnings("removal")
-    public synchronized void removeAll(String className, SecurityManager mgr) {
-        mutateCheck(mgr);
         removeAll(className, true);
     }
 
@@ -1898,23 +1853,11 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
     }
     
     public void setDebug(boolean debug) {
-        setDebug(debug, null);
-    }
-    
-    @SuppressWarnings("removal")
-    public void setDebug(boolean debug, SecurityManager mgr) {
-        mutateCheck(mgr);
         this.debug = debug;
     }
     
     // ends this game; used by tournament main program
     public synchronized void shutdown() {
-        shutdown(null);
-    }
-    
-    @SuppressWarnings("removal")
-    public synchronized void shutdown(SecurityManager mgr) {
-        mutateCheck(mgr);
         
         // remove/reset all existing animals from the game
         for (Critter critter : critterList) {
@@ -1949,16 +1892,10 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
         notifyObservers(Event.RESET);
     }
     
-    @SuppressWarnings("removal")
-    public void unlock(SecurityManager mgr) {
+    public void unlock() {
         if (!isLocked()) {
             throw new BuggyCritterException("model is not locked");
         }
-        
-        if (mgr != security) {
-            throw new BuggyCritterException("cannot unlock this model using the given key");
-        }
-        security = null;
     }
     
     // Moves position of all critters; does collisions, fights, eating, mating, etc.
@@ -2397,7 +2334,7 @@ class CritterModel extends Observable {  // implements Iterable<Critter> {
 
     // Fills and returns an array of random values of the proper types
     // for the given constructor.
-    @SuppressWarnings({"deprecation", "removal"})
+    @SuppressWarnings({"removal"})
     private Object[] createRandomParameters(
             Class<? extends Critter> critterClass,
             Constructor<? extends Critter> ctor) {
@@ -3131,7 +3068,6 @@ class CritterPanel extends JPanel implements Observer, MouseListener, MouseMotio
     }
 
     // Responds to Observable updates to the model.
-    @SuppressWarnings({"deprecation"})
     public void update(Observable o, Object arg) {
         repaint();
     }
@@ -3429,7 +3365,6 @@ class ClassUtils {
     }
     
     // Returns a list of all folders in the system Java class path.
-    @SuppressWarnings("removal")
     public static List<String> getClassPathFolders() {
         try {
             String classPath = System.getProperty("java.class.path").trim();
@@ -3447,7 +3382,7 @@ class ClassUtils {
                 }
             }
             return pruned;
-        } catch (AccessControlException e) {
+        } catch (Exception e) {   // ALLISON HACK
             return Arrays.asList(".");
         }
     }
@@ -3621,10 +3556,9 @@ class ClassUtils {
             InputStream input = new BufferedInputStream(url.openStream());
             byte[] buffer = new byte[512000];
             int numRead;
-            long numWritten = 0;
             while ((numRead = input.read(buffer)) != -1) {
                 output.write(buffer, 0, numRead);
-                numWritten += numRead;
+                //numWritten += numRead;
             }
             output.close();
         }
@@ -3718,6 +3652,7 @@ class ClassUtils {
 
             zipFilesMap.put(ze.getName(), b);
         }
+        zip.close();
         return zipFilesMap;
     }
 
@@ -3734,6 +3669,7 @@ class ClassUtils {
     // Dynamically loads the compiled .class file with the given file name
     // into our JVM and returns its Class object.
     // Throws various reflectiony exceptions if the file is bad.
+    @SuppressWarnings({"deprecated"})
     public static Class<?> loadClass(String fileName)
             throws ClassNotFoundException {
         String folderName = getFolder(fileName);
@@ -3769,6 +3705,7 @@ class ClassUtils {
         while (reader.ready()) {
             text.append((char) reader.read());
         }
+        reader.close();
         return text.toString();
     }
 
@@ -3784,6 +3721,7 @@ class ClassUtils {
         while (reader.ready()) {
             out.write(reader.read());
         }
+        reader.close();
         return out.toByteArray();
     }
 
@@ -4020,7 +3958,7 @@ class InputPane {
 
     // Shows a dialog box with the given settings in it.
     // Returns true if OK was clicked and false if the dialog was canceled.
-    @SuppressWarnings({"deprecation", "removal"})
+    @SuppressWarnings({"removal"})
     public static boolean showInputDialog(Frame parent, String title,
             String message, final String[] names, final Class<?>[] types,
             final Object[] initialValues) {
@@ -4235,7 +4173,7 @@ class InputPane {
 class ListOptionPane extends JDialog implements ActionListener {
     private static final long serialVersionUID = 0;
 
-    private JList list;
+    private JList<String> list;
 
     private JButton ok, cancel;
 
@@ -4300,6 +4238,7 @@ class NetworkManager {
             this.listener = listener;
         }
         
+        @SuppressWarnings({"deprecated"})
         public void run() {
             if (ipAddress == null) {
                 // use host name to name classes sent over the wire
@@ -4330,6 +4269,7 @@ class NetworkManager {
                     ipAddress = input.nextLine().trim();
                     ipAddresses = ipAddress + "  (local: " + ipAddresses + ")";
                 }
+                input.close();
             } catch (Exception e) {
                 if (DEBUG) {
                     e.printStackTrace();
@@ -4413,7 +4353,7 @@ class NetworkManager {
 
     // Notifies this network manager that you want it to shut down
     // and stop listening for messages.
-    @SuppressWarnings({"deprecation", "removal"})
+    @SuppressWarnings({"removal"})
     public void stop() {
         shouldContinue = false;
         try {
@@ -4514,6 +4454,7 @@ class NetworkManager {
                                 if (DEBUG)
                                     System.out.println("Sent on port " + port
                                             + ":\n" + message);
+                                sock.close();
                             } catch (IOException e) {
                                 // notify observers that an error occurred
                                 error.fire(e);
@@ -4670,7 +4611,7 @@ class ZipDownloader implements Runnable {
         this.button = button;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("deprecated")
     public void run() {
         button.setEnabled(false);
         try {
