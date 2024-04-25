@@ -1,6 +1,6 @@
 // CS 142 Critters
 // Authors: Marty Stepp, Stuart Reges, Allison Obourn
-// Version: 2023/10/1
+// Version: 2024/4/23
 //
 // Provides the main method for the simulation.
 //

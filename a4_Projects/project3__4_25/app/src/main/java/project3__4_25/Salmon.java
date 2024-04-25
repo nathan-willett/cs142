@@ -72,3 +72,4 @@ public class Salmon extends Critter {
         return isHungry ? "H" : "F"; // 'H' for hungry, 'F' for full
     }
 }
+

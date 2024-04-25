@@ -1,4 +1,4 @@
-import java.awt.*; // for Color
+import java.awt.*;
 import java.util.Random;
 
 public class Koala extends Critter {
@@ -19,7 +19,7 @@ public class Koala extends Critter {
     private Critter.Direction randomDirection() {
         Critter.Direction[] directions = { Critter.Direction.NORTH, Critter.Direction.SOUTH, Critter.Direction.EAST,
                 Critter.Direction.WEST };
-        return directions[random.nextInt(directions.length)]; // choose a random direction
+        return directions[random.nextInt(directions.length)]; // choose a random direction from the array above
     }
 
     @Override

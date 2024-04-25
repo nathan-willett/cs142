@@ -9,10 +9,6 @@
 import java.awt.*; // for Color
 
 public abstract class Critter {
-	private boolean east;
-
-	//add a constructor to initialize fields? not sure what this means
-	
 	// The following five methods are the ones you must implement for your assignment.
 	// I'm not going to comment them because that's your job.
 
@@ -29,22 +25,13 @@ public abstract class Critter {
 	}
 
 	public Direction getMove() {
-		if(east) {
-			east = false;
-			return Direction.EAST;
-		} else {
-			east = true;
-			return Direction.WEST;
-		}
+		return Direction.CENTER;
 	}
-
-
 
 	public String toString() {
 		return "?";
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // I use these fields to implement the methods below such as getX and getNeighbor.
     private int x;

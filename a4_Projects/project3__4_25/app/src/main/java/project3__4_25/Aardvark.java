@@ -1,4 +1,4 @@
-import java.awt.*; // for Color
+import java.awt.*;
 
 public class Aardvark extends Critter {
     private boolean walkSouth; // to determine the zigzag pattern

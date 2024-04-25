@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'project3.App'
+    mainClass = 'project3__4_25.CritterMain'
 }
 
 tasks.named('test') {

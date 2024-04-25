@@ -1,4 +1,4 @@
-import java.awt.*; // for Color
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Cat extends Critter {
@@ -50,7 +50,17 @@ public class Cat extends Critter {
 
     @Override
     public String toString() {
-        Critter.Direction lastMove = movePattern.get((moveCounter - 1) % movePattern.size()); // get the last move
+        if (movePattern == null || movePattern.isEmpty()) {
+            return "?"; // default if there's no pattern
+        }
+
+        int index = (moveCounter - 1) % movePattern.size();
+        if (index < 0 || index >= movePattern.size()) {
+            return "?"; // default if index is invalid
+        }
+
+        Critter.Direction lastMove = movePattern.get(index); // safe access to index
+
         switch (lastMove) {
             case NORTH:
                 return "^"; // caret for north
@@ -61,7 +71,7 @@ public class Cat extends Critter {
             case WEST:
                 return "<"; // less-than for west
             default:
-                return "^"; // default to caret
+                return "?"; // fallback in case of unexpected behavior
         }
     }
 }

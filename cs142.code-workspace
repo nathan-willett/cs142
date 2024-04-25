@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"java.debug.settings.onBuildFailureProceed": true,
-		"java.dependency.packagePresentation": "hierarchical"
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.configuration.updateBuildConfiguration": "interactive"
 	}
 }

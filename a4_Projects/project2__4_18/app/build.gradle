@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'project2.TileMain'
+    mainClass = 'project2__4_18.TileMain'
 }
 
 tasks.named('test') {

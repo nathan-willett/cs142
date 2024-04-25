@@ -1,4 +1,4 @@
-import java.awt.*; // for Color
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Tiger extends Critter {
@@ -57,7 +57,15 @@ public class Tiger extends Critter {
 
     @Override
     public String toString() {
-        Critter.Direction lastMove = movePattern.get((moveCounter - 1) % movePattern.size()); // last move
+        int index = (moveCounter - 1) % movePattern.size();
+        
+        // Ensure the index is within bounds
+        if (index < 0 || index >= movePattern.size()) {
+            return "?"; // return a default symbol if index is invalid
+        }
+        
+        Critter.Direction lastMove = movePattern.get(index); // safe index access
+        
         switch (lastMove) {
             case NORTH:
                 return "^"; // caret for north
@@ -68,7 +76,7 @@ public class Tiger extends Critter {
             case WEST:
                 return "<"; // less-than for west
             default:
-                return "^"; // default to caret
+                return "^"; // fallback in case of unexpected behavior
         }
     }
 }
