@@ -4,17 +4,17 @@ rootProject.name = 'CS142'
 include 'a1_CodeStepByStep'
 include 'a2_ExampleCodeByWeek'
 include 'a3_LiangSourceCodeExamples'
-include 'a4_Projects:project1'
-include 'a4_Projects:project2'
-include 'a4_Projects:project3'
+include 'a4_Projects:project1__4_11'
+include 'a4_Projects:project2__4_18'
+include 'a4_Projects:project3__4_25'
 // include 'a4_Projects:project4'
 // include 'a4_Projects:project5'
 include 'a5_FinalProject'
 
 // Set project directories for projects nested inside 'a4_Projects'
-project(':a4_Projects:project1').projectDir = new File('a4_Projects/project1')
-project(':a4_Projects:project2').projectDir = new File('a4_Projects/project2')
-project(':a4_Projects:project3').projectDir = new File('a4_Projects/project3')
+project(':a4_Projects:project1__4_11').projectDir = new File('a4_Projects/project1__4_11')
+project(':a4_Projects:project2__4_18').projectDir = new File('a4_Projects/project2__4_18')
+project(':a4_Projects:project3__4_25').projectDir = new File('a4_Projects/project3__4_25')
 // project(':a4_Projects:project4').projectDir = new File('a4_Projects/project4')
 // project(':a4_Projects:project5').projectDir = new File('a4_Projects/project5')
 
