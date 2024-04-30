@@ -1,120 +1,82 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * Class: Tiger
- * 
- * Represents a Tiger critter in a simulation environment. The Tiger has a predefined movement pattern,
- * fighting strategy, and eating behavior. It moves in a clockwise square pattern and adjusts its hunger state
- * based on certain conditions.
- * 
- * @author Nathan Willett
- * @section 15596
- * @course CS 142, Spring 2024
- */
 public class Tiger extends Critter {
-    private int moveCounter; // Tracks the current move count
-    private boolean isHungry; // Indicates whether the Tiger is hungry
-    private ArrayList<Critter.Direction> movePattern; // Predefined movement pattern
+    private int moveCounter; // tracks the current move
+    private boolean isHungry; // whether the Tiger is hungry
+    private ArrayList<Critter.Direction> movePattern; // pattern for movement
 
-    // Constructs a Tiger with a predefined movement pattern and hunger state.
     public Tiger() {
-        this.moveCounter = 0; // Initialize the move counter
-        this.isHungry = true; // Tiger starts in a hungry state
-        this.movePattern = new ArrayList<>(); // Initialize the move pattern
-        
-        // Define the pattern for clockwise square movement
-        for (Critter.Direction direction : new Critter.Direction[]{
-            Critter.Direction.NORTH,
-            Critter.Direction.EAST,
-            Critter.Direction.SOUTH,
-            Critter.Direction.WEST
-        }) {
-            for (int i = 0; i < 3; i++) { // Add each direction three times
-                movePattern.add(direction); 
-            }
+        this.moveCounter = 0; // initialize move counter
+        this.isHungry = true; // Tiger starts hungry
+        this.movePattern = new ArrayList<>(); // initialize move pattern
+        // Define the clockwise square pattern
+        for (int i = 0; i < 3; i++) {
+            movePattern.add(Critter.Direction.NORTH);
+        }
+        for (int i = 0; i < 3; i++) {
+            movePattern.add(Critter.Direction.EAST);
+        }
+        for (int i = 0; i < 3; i++) {
+            movePattern.add(Critter.Direction.SOUTH);
+        }
+        for (int i = 0; i < 3; i++) {
+            movePattern.add(Critter.Direction.WEST);
         }
     }
 
-    /**
-     * Determines whether the Tiger will eat.
-     *
-     * @return true if the Tiger is hungry, otherwise false.
-     */
     @Override
     public boolean eat() {
-        if (isHungry) { // Only eats if hungry
-            isHungry = false; // Become non-hungry after eating
-            return true; // Indicates that the Tiger eats
+        if (isHungry) { // if the Tiger is hungry
+            isHungry = false; // become non-hungry after eating
+            return true; // eats
         }
-        return false; // Otherwise, doesn't eat
+        return false; // otherwise, doesn't eat
     }
 
-    /**
-     * Defines the Tiger's fighting strategy based on the opponent.
-     *
-     * @param opponent The representation of the opponent.
-     * @return ROAR for Aardvark, POUNCE for others.
-     */
     @Override
     public Critter.Attack fight(String opponent) {
-        isHungry = true; // After a fight, the Tiger becomes hungry again
-        if (opponent.equals("%")) { // If the opponent is Aardvark
-            return Critter.Attack.ROAR; // Roar attack
+        isHungry = true; // after a fight, becomes hungry again
+        if (opponent.equals("%")) { // if opponent is Aardvark
+            return Critter.Attack.ROAR;
         }
-        return Critter.Attack.POUNCE; // Pounce for other opponents
+        return Critter.Attack.POUNCE; // otherwise, pounces
     }
 
-    /**
-     * Returns the color of the Tiger.
-     *
-     * @return BLACK to represent the Tiger.
-     */
     @Override
     public Color getColor() {
-        return Color.BLACK; // The Tiger is black
+        return Color.BLACK; // Tiger is black
     }
 
-    /**
-     * Determines the Tiger's movement based on its predefined pattern.
-     *
-     * @return The direction for the Tiger's movement.
-     */
     @Override
     public Critter.Direction getMove() {
-        // Get the direction based on the current move counter
-        Critter.Direction move = movePattern.get(moveCounter % movePattern.size());
-        moveCounter++; // Increment the move counter after getting the move
-        return move; // Return the selected movement direction
+        Critter.Direction move = movePattern.get(moveCounter % movePattern.size()); // current move
+        moveCounter++; // increment move counter
+        return move;
     }
 
-    /**
-     * Represents the Tiger as a character, indicating its last move direction.
-     *
-     * @return Character representing the last move.
-     */
     @Override
     public String toString() {
-        int index = (moveCounter - 1) % movePattern.size(); // Get the last move index
+        int index = (moveCounter - 1) % movePattern.size();
         
-        // Ensure the index is within valid bounds
+        // Ensure the index is within bounds
         if (index < 0 || index >= movePattern.size()) {
-            return "?"; // Default symbol if index is invalid
+            return "?"; // return a default symbol if index is invalid
         }
-
-        Critter.Direction lastMove = movePattern.get(index); // Get the last move direction
-
+        
+        Critter.Direction lastMove = movePattern.get(index); // safe index access
+        
         switch (lastMove) {
             case NORTH:
-                return "^";
+                return "^"; // caret for north
             case EAST:
-                return ">";
+                return ">"; // greater-than for east
             case SOUTH:
-                return "V";
+                return "V"; // uppercase 'V' for south
             case WEST:
-                return "<";
+                return "<"; // less-than for west
             default:
-                return "^"; // Fallback in case of unexpected behavior
+                return "^"; // fallback in case of unexpected behavior
         }
     }
 }
