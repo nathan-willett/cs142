@@ -1,77 +1,114 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Class: Cat
+ * 
+ * Represents a Cat critter in a simulation environment with predefined movement
+ * patterns and behaviors. The Cat moves in a clockwise square pattern and has
+ * specific
+ * fighting strategies based on the opponent.
+ * 
+ * @author Nathan Willett
+ * @section 15596
+ * @course CS 142, Spring 2024
+ */
 public class Cat extends Critter {
-    private int moveCounter; // keeps track of the current move
-    private ArrayList<Critter.Direction> movePattern; // the predefined pattern of moves
+    private int moveCounter; // Keeps track of the current move count
+    private ArrayList<Critter.Direction> movePattern; // Predefined movement pattern
 
+    /**
+     * Initializes a new Cat with a specific clockwise square move pattern.
+     */
     public Cat() {
-        this.moveCounter = 0; // starts at the beginning of the move pattern
-        this.movePattern = new ArrayList<>(); // initialize the move pattern
-        // Define the pattern for the clockwise square movement
-        for (int i = 0; i < 3; i++) {
-            movePattern.add(Critter.Direction.NORTH);
-        }
-        for (int i = 0; i < 3; i++) {
-            movePattern.add(Critter.Direction.EAST);
-        }
-        for (int i = 0; i < 3; i++) {
-            movePattern.add(Critter.Direction.SOUTH);
-        }
-        for (int i = 0; i < 3; i++) {
-            movePattern.add(Critter.Direction.WEST);
+        moveCounter = 0; // Reset the move counter
+        movePattern = new ArrayList<>(); // Initialize the move pattern
+
+        // Add the pattern for clockwise square movement
+        for (Critter.Direction direction : new Critter.Direction[] {
+                Critter.Direction.NORTH,
+                Critter.Direction.EAST,
+                Critter.Direction.SOUTH,
+                Critter.Direction.WEST
+        }) {
+            for (int i = 0; i < 3; i++) {
+                movePattern.add(direction); // Add each direction three times
+            }
         }
     }
 
+    /**
+     * The Cat does not eat.
+     *
+     * @return false.
+     */
     @Override
     public boolean eat() {
-        return false; // cat never eats
+        return false;
     }
 
+    /**
+     * Defines the Cat's fighting strategy based on the opponent.
+     *
+     * @param opponent The representation of the opponent.
+     * @return ROAR if opponent is an Aardvark, otherwise POUNCE.
+     */
     @Override
     public Critter.Attack fight(String opponent) {
-        if (opponent.equals("%")) { // if opponent is Aardvark
-            return Critter.Attack.ROAR;
-        }
-        return Critter.Attack.POUNCE; // otherwise, pounces
+        return opponent.equals("%") ? Critter.Attack.ROAR : Critter.Attack.POUNCE;
     }
 
+    /**
+     * Specifies the color of the Cat.
+     *
+     * @return Blue.
+     */
     @Override
     public Color getColor() {
-        return Color.BLUE; // blue color
+        return Color.BLUE;
     }
 
+    /**
+     * Determines the Cat's movement based on its pattern and move counter.
+     *
+     * @return The next direction for movement.
+     */
     @Override
     public Critter.Direction getMove() {
-        Critter.Direction move = movePattern.get(moveCounter % movePattern.size()); // current move
-        moveCounter++; // increment move counter
+        Critter.Direction move = movePattern.get(moveCounter % movePattern.size()); // Get the current move
+        moveCounter++; // Increment the move counter
         return move;
     }
 
+    /**
+     * Represents the Cat as a character, indicating its last move direction.
+     *
+     * @return Character representing the last move.
+     */
     @Override
     public String toString() {
         if (movePattern == null || movePattern.isEmpty()) {
-            return "?"; // default if there's no pattern
+            return "?"; // Default if no pattern
         }
 
-        int index = (moveCounter - 1) % movePattern.size();
+        int index = (moveCounter - 1) % movePattern.size(); // Get the last move index
         if (index < 0 || index >= movePattern.size()) {
-            return "?"; // default if index is invalid
+            return "?"; // Default if invalid index
         }
 
-        Critter.Direction lastMove = movePattern.get(index); // safe access to index
+        Critter.Direction lastMove = movePattern.get(index); // Get the last move direction
 
         switch (lastMove) {
             case NORTH:
-                return "^"; // caret for north
+                return "^";
             case EAST:
-                return ">"; // greater-than for east
+                return ">";
             case SOUTH:
-                return "V"; // uppercase 'V' for south
+                return "V";
             case WEST:
-                return "<"; // less-than for west
+                return "<";
             default:
-                return "?"; // fallback in case of unexpected behavior
+                return "?"; // Default fallback
         }
     }
 }
