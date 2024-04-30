@@ -7,16 +7,17 @@ include 'a3_LiangSourceCodeExamples'
 include 'a4_Projects:project1__4_11'
 include 'a4_Projects:project2__4_18'
 include 'a4_Projects:project3__4_25'
-// include 'a4_Projects:project4'
-// include 'a4_Projects:project5'
-include 'a5_FinalProject'
+include 'a4_Projects:project4__5_2'
+//include 'a4_Projects:project5__x_x'
+//include 'a5_FinalProject__6_7'
 
 // Set project directories for projects nested inside 'a4_Projects'
 project(':a4_Projects:project1__4_11').projectDir = new File('a4_Projects/project1__4_11')
 project(':a4_Projects:project2__4_18').projectDir = new File('a4_Projects/project2__4_18')
 project(':a4_Projects:project3__4_25').projectDir = new File('a4_Projects/project3__4_25')
-// project(':a4_Projects:project4').projectDir = new File('a4_Projects/project4')
-// project(':a4_Projects:project5').projectDir = new File('a4_Projects/project5')
+project(':a4_Projects:project4__5_2').projectDir = new File('a4_Projects/project4__5_2')
+//project(':a4_Projects:project5__x_x').projectDir = new File('a4_Projects/project5__x_x')
+//project(':a5_FinalProject5__6_7').projectDir = new File('a5_FinalProject5__6_7')
 
 // Assuming a5_FinalProject and other top-level projects follow the conventional layout,
 // so no additional projectDir configuration is necessary for them.
