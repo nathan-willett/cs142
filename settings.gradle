@@ -7,7 +7,7 @@ include 'a3_LiangSourceCodeExamples'
 include 'a4_Projects:project1__4_11'
 include 'a4_Projects:project2__4_18'
 include 'a4_Projects:project3__4_25'
-include 'a4_Projects:project4__5_2'
+include 'a4_Projects:project4__5_8'
 //include 'a4_Projects:project5__x_x'
 //include 'a5_FinalProject__6_7'
 
@@ -15,7 +15,7 @@ include 'a4_Projects:project4__5_2'
 project(':a4_Projects:project1__4_11').projectDir = new File('a4_Projects/project1__4_11')
 project(':a4_Projects:project2__4_18').projectDir = new File('a4_Projects/project2__4_18')
 project(':a4_Projects:project3__4_25').projectDir = new File('a4_Projects/project3__4_25')
-project(':a4_Projects:project4__5_2').projectDir = new File('a4_Projects/project4__5_2')
+project(':a4_Projects:project4__5_2').projectDir = new File('a4_Projects/project4__5_8')
 //project(':a4_Projects:project5__x_x').projectDir = new File('a4_Projects/project5__x_x')
 //project(':a5_FinalProject5__6_7').projectDir = new File('a5_FinalProject5__6_7')
 
