@@ -18,7 +18,7 @@ public class Plurals {
 
     public static void main(String[] args) throws FileNotFoundException {
         // reads data into the list
-        ArrayList<String> words = words();
+        ArrayList<String> words = readData();
         System.out.println(words);
 
         // removes all words ending in 's' from the list
