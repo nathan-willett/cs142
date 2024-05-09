@@ -1,3 +1,5 @@
+
+
 /**
  * Class: Location
  * 
@@ -16,5 +18,13 @@ public class Location {
         this.elevation = elevation;
     }
 
-    public int 
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getElevation() { return elevation; }
+
+    // Method to return a string representation of the location for debugging
+    @Override
+    public String toString() {
+        return String.format("Location[x=%d, y=%d, elevation=%d]", x, y, elevation);
+    }
 }
