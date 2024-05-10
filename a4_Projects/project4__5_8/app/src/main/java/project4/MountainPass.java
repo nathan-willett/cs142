@@ -221,17 +221,19 @@ public class MountainPass {
      *                elevation change.
      */
     public static void outputResults(Location highest, Location lowest, List<Location> path, int totalElevationChange, int steepestElevationChange) {
-        System.out.println("Mountain Peak: (" + highest.getX() + ", " + highest.getY() + ")");
-        System.out.println("Lowest Point: (" + lowest.getX() + ", " + lowest.getY() + ")");
+        System.out.println("Mountain Peak: " + formatLocation(highest));
+        System.out.println("Lowest Point: " + formatLocation(lowest));
         System.out.print("Lowest Elevation Change Route: ");
-        
-        for (int i = 0; i < path.size(); i++) {
-            System.out.print("(" + path.get(i).getX() + ", " + path.get(i).getY() + ")");
-            if (i < path.size() - 1) {
-                System.out.print(", ");
+    
+        // Check if path is not empty to avoid errors
+        if (!path.isEmpty()) {
+            for (int i = 0; i < path.size(); i++) {
+                if (i > 0) System.out.print(", ");  // Add comma before all but the first entry
+                System.out.print(formatLocation(path.get(i)));
             }
+            System.out.println(); // Ensure the output ends with a newline
         }
-        System.out.println(); // Finish the path output with a newline
+    
         System.out.println("Total Elevation Change: " + totalElevationChange);
         System.out.println("Steepest Elevation Change: " + steepestElevationChange);
     }
