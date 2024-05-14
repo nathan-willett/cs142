@@ -3,6 +3,22 @@ package a1_CodeStepByStep.src.w6_exercises_B___5_13;
 import java.util.*;
 
 public class Clump {
+    public static void main(String[] args) {
+        // Example usage
+        ArrayList<String> words = new ArrayList<>();
+        words.add("four");
+        words.add("score");
+        words.add("and");
+        words.add("seven");
+        words.add("years");
+        words.add("ago");
+        words.add("our");
+
+        System.out.println("Before clumping: " + words);
+        clump(words);
+        System.out.println("After clumping: " + words);
+    }
+
     public static void clump(ArrayList<String> list) {
         // Create a new list to store the clumped strings
         ArrayList<String> clumpedList = new ArrayList<>();
@@ -22,21 +38,5 @@ public class Clump {
         // Replace the original list with the clumped list
         list.clear();
         list.addAll(clumpedList);
-    }
-
-    public static void main(String[] args) {
-        // Example usage
-        ArrayList<String> words = new ArrayList<>();
-        words.add("four");
-        words.add("score");
-        words.add("and");
-        words.add("seven");
-        words.add("years");
-        words.add("ago");
-        words.add("our");
-
-        System.out.println("Before clumping: " + words);
-        clump(words);
-        System.out.println("After clumping: " + words);
     }
 }
