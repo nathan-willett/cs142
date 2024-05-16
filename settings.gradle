@@ -9,7 +9,8 @@ include 'a4_Projects:project2__4_18'
 include 'a4_Projects:project3__4_25'
 include 'a4_Projects:project4__5_8'
 include 'a4_Projects:project5__5_16'
-//include 'a5_FinalProject__6_7'
+include 'a4_Projects:project6__5_23'
+include 'a5_FinalProject__6_15'
 
 // Set project directories for projects nested inside 'a4_Projects'
 project(':a4_Projects:project1__4_11').projectDir = new File('a4_Projects/project1__4_11')
@@ -17,7 +18,8 @@ project(':a4_Projects:project2__4_18').projectDir = new File('a4_Projects/projec
 project(':a4_Projects:project3__4_25').projectDir = new File('a4_Projects/project3__4_25')
 project(':a4_Projects:project4__5_2').projectDir = new File('a4_Projects/project4__5_8')
 project(':a4_Projects:project5__5_16').projectDir = new File('a4_Projects/project5__5_16')
-//project(':a5_FinalProject5__6_7').projectDir = new File('a5_FinalProject5__6_7')
+project(':a4_Projects:project6__5_23').projectDir = new File('a4_Projects/project6__5_23')
+project(':a5_FinalProject5__6_7').projectDir = new File('a5_FinalProject5__6_7')
 
 // Assuming a5_FinalProject and other top-level projects follow the conventional layout,
 // so no additional projectDir configuration is necessary for them.
