@@ -5,7 +5,8 @@ import java.util.*;
 /**
  * Class: GrammarSolver
  * 
- * GrammarSolver processes a set of BNF grammar rules from a text file, then outputs a random sentance using the 
+ * GrammarSolver interprets a set of BNF rules from the 'lines' ArrayList
+ * created in GrammarMain. If the contents of the 
  * 
  * @author Nathan Willett
  * @section 15596
@@ -15,7 +16,8 @@ public class GrammarSolver {
     private Map<String, String[]> grammarMap;
 
     /**
-     * This constructor initializes a new GrammarSolver object with the BNF rules provided in the 
+     * This constructor initializes a new GrammarSolver object with the contents of
+     * the 'lines' ArrayList from GrammarMain.
      * 
      * @param rules
      */
@@ -23,7 +25,7 @@ public class GrammarSolver {
         if (rules == null || rules.isEmpty()) {
             throw new IllegalArgumentException("Rules list cannot be null or empty");
         }
-        
+
         grammarMap = new HashMap<>();
         for (String rule : rules) {
             String[] parts = rule.split("::=");
@@ -39,6 +41,12 @@ public class GrammarSolver {
         }
     }
 
+    /**
+     * 
+     * 
+     * @param symbol
+     * @return
+     */
     public boolean contains(String symbol) {
         if (symbol == null || symbol.isEmpty()) {
             throw new IllegalArgumentException("Symbol cannot be null or empty");
@@ -46,16 +54,27 @@ public class GrammarSolver {
         return grammarMap.containsKey(symbol);
     }
 
+    /**
+     * 
+     * 
+     * @return
+     */
     public Set<String> getSymbols() {
         return grammarMap.keySet();
     }
 
+    /**
+     * 
+     * 
+     * @param symbol
+     * @return
+     */
     public String generate(String symbol) {
         if (symbol == null || symbol.isEmpty()) {
             throw new IllegalArgumentException("Symbol cannot be null or empty");
         }
         if (!grammarMap.containsKey(symbol)) {
-            return symbol;  // Terminal symbol, return as is
+            return symbol; // Terminal symbol, return as is
         }
 
         Random random = new Random();
