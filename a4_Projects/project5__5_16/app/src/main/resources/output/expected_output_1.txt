@@ -1,0 +1,70 @@
+Welcome to the CS 142 random sentence generator!
+
+What is the name of the grammar file? sentence.txt
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <dp>
+How many do you want me to generate? 3
+
+a
+the
+a
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? s
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <kitty>
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <np>
+How many do you want me to generate? 5
+
+the fat pretentious wonderful university
+the wonderful university
+Jane
+Sally
+the big television
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? big
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <big>
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <s>
+How many do you want me to generate? 10
+
+Jane kissed the wonderful man
+a pretentious mother died
+a pretentious subliminal cat died
+Jane kissed Jane
+the green faulty subliminal fat man honored Sally
+a fat child hit a faulty big wonderful wonderful television
+the green fat child laughed
+a faulty man died
+a wonderful dog died
+the big man wept
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <s>
+How many do you want me to generate? 1
+
+Fred laughed
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? 

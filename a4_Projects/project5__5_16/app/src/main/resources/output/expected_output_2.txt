@@ -1,0 +1,97 @@
+Welcome to the CS 142 random sentence generator!
+
+What is the name of the grammar file? sentence.txt
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <pn>
+How many do you want me to generate? 4
+
+Sally
+Spot
+John
+Sally
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? s
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <booyah>
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? big
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? Fred
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? the
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <big>
+Illegal symbol.
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <s>
+How many do you want me to generate? 15
+
+Elmo laughed
+Sally honored a subliminal child
+Jane honored Spot
+Jane kissed the wonderful man
+a pretentious mother died
+a pretentious subliminal cat died
+Jane kissed Jane
+the green faulty subliminal fat man honored Sally
+a fat child hit a faulty big wonderful wonderful television
+the green fat child laughed
+a faulty man died
+a wonderful dog died
+the big man wept
+Fred laughed
+Sally hit a pretentious dog
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <s>
+How many do you want me to generate? 3
+
+the green green television honored Sally
+Spot collapsed
+a pretentious big man helped John
+
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <vp>
+How many do you want me to generate? 5
+
+helped the wonderful man
+collapsed
+hit a wonderful wonderful subliminal television
+honored a subliminal big television
+wept
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? <vp>
+How many do you want me to generate? 2
+
+collapsed
+died
+
+Available symbols to generate are:
+[<adj>, <adjp>, <dp>, <iv>, <n>, <np>, <pn>, <s>, <tv>, <vp>]
+What do you want to generate (Enter to quit)? 

@@ -1,0 +1,75 @@
+Welcome to the CS 142 random sentence generator!
+
+What is the name of the grammar file? sentence2.txt
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? DETERMINANT
+How many do you want me to generate? 3
+
+a
+the
+a
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? <SENTENCE>
+Illegal symbol.
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? sentence
+Illegal symbol.
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? <kitty>
+Illegal symbol.
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? NOUNPHRASE
+How many do you want me to generate? 5
+
+the terrible smelly blue girl
+the blue child
+Grace
+Catriona
+the super cat
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? huge
+Illegal symbol.
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? <HUGE>
+Illegal symbol.
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? SENTENCE
+How many do you want me to generate? 10
+
+Shurui kicked the hungry television
+a smelly great grandpa laughed
+a hungry super dog collapsed
+Tyler rebooted Tyler
+the buggy smelly smelly tiny store built Jamie
+a buggy store destroyed a furious hungry super smelly store
+the huge blue Java program collapsed
+a boring second cousin collapsed
+a boring Java program wept
+the blue store laughed
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? SENTENCE
+How many do you want me to generate? 1
+
+Dane laughed
+
+Available symbols to generate are:
+[ADJECTIVE, ADJPHRASE, DETERMINANT, INTRANSITIVEVERB, NOUN, NOUNPHRASE, PROPERNOUN, SENTENCE, TRANSITIVEVERB, VERBPHRASE]
+What do you want to generate (Enter to quit)? 

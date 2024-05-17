@@ -1,0 +1,62 @@
+Welcome to the CS 142 random sentence generator!
+
+What is the name of the grammar file? sentence3.txt
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? F2
+How many do you want me to generate? 5
+
+pow
+max
+max
+pow
+max
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? OP
+How many do you want me to generate? 4
+
++
++
+%
+/
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? T
+How many do you want me to generate? 6
+
+0
+42
+42
+( ( x % pow ( ( 0 ) , - cos ( x + tan ( 0 ) ) % 1 ) ) )
+min ( 92 / sin ( 0 ) , x )
+- ( x )
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? E
+How many do you want me to generate? 8
+
+y % abs ( y )
+92 / x - 0 / 0
+x + 0
+1
+sqrt ( max ( 92 / 0 , ( x * pow ( ( ( cos ( ( ( ( - 0 ) ) ) * 42 ) ) * 0 ) % 42 , 42 ) ) % 42 ) * - 92 * sqrt ( cos ( 0 % 0 ) ) ) * y
+92
+y / x
+x + 92 + x / min ( 1 , ( ( 42 ) - pow ( 1 , ( y % 0 ) ) ) - - ( pow ( pow ( y / x + 0 % - 1 + pow ( y % 0 % ( sqrt ( sin ( ( - y - y ) + 92 % 92 ) - 92 % 92 ) / max ( max ( 1 , x % y + max ( 0 , 42 * x - pow ( - pow ( 0 + y , ( 0 - 42 + - 1 ) / 0 / 92 % 92 ) + sin ( pow ( pow ( 0 - cos ( sqrt ( cos ( 42 % pow ( y - x , ( 42 % sin ( ( ( 92 ) - - y * ( 42 * 92 * tan ( y * x ) % min ( cos ( x ) , tan ( 0 % y ) ) + 42 ) ) ) ) ) ) + y * - - 1 % sqrt ( max ( 92 * - 1 % 1 , y ) ) ) ) % ( pow ( 1 % y , - 42 - y ) ) , - x % tan ( y ) ) , 92 ) ) - abs ( - sqrt ( max ( cos ( 92 - sqrt ( x * ( ( 1 / 0 - 1 ) ) ) / ( y % x + - 92 ) / 1 ) / 0 , 1 ) ) ) , 92 % 1 + y - x * - - 42 ) ) / 1 * x - 92 ) + 92 , y ) + y / 1 ) + ( 92 % x % ( 42 ) ) , cos ( y % sqrt ( tan ( 42 ) + pow ( 1 , x + y / 1 - 0 ) ) - 0 ) ) , 92 ) + 0 , 0 * min ( 92 + 92 % - 42 , 0 / 0 ) - 0 ) ) ) % 0
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? E
+How many do you want me to generate? 2
+
+42 * tan ( y * y ) % min ( 0 , max ( pow ( 0 / - - 42 + x , abs ( 92 / ( - sin ( sin ( x % y ) ) * - - 0 ) ) - - y ) , ( 92 % y * 42 / 1 ) - - 0 ) % 92 )
+min ( x , ( max ( y + y , 92 ) + 42 ) ) / 92 % - ( 1 )
+
+Available symbols to generate are:
+[E, F1, F2, OP, T]
+What do you want to generate (Enter to quit)? 

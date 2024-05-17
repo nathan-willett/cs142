@@ -1,0 +1,29 @@
+Welcome to the CS 142 random sentence generator!
+
+What is the name of the grammar file? simple.txt
+
+Available symbols to generate are:
+[exp, num, op]
+What do you want to generate (Enter to quit)? num
+How many do you want me to generate? 5
+
+9
+4
+1
+9
+1
+
+Available symbols to generate are:
+[exp, num, op]
+What do you want to generate (Enter to quit)? exp
+How many do you want me to generate? 5
+
+3 * 3
+7 - 9
+7 / 9
+9 - 6
+5 + 4
+
+Available symbols to generate are:
+[exp, num, op]
+What do you want to generate (Enter to quit)? 
