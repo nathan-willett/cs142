@@ -1,4 +1,4 @@
-package a4_Projects.project5__5_16.app.src.main.java.project5__5_16;
+package a4_Projects.project5__5_16.app.src.main.java.project5;
 // CS 142, Project 5 (Grammar Solver)
 // Instructor-provided testing program.
 // Original version by Stuart Reges

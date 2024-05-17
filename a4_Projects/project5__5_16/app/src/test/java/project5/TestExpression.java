@@ -1,4 +1,4 @@
-package a4_Projects.project5__5_16.app.src.test.java.project5__5_16;
+package a4_Projects.project5__5_16.app.src.test.java.project5;
 
 // Adapted by Allison Obourn 
 // from a test program by Stuart Reges
