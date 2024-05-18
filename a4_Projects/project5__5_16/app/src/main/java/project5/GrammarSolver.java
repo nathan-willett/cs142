@@ -1,12 +1,13 @@
-package a4_Projects.project5__5_16.app.src.main.java.project5;
-
 import java.util.*;
 
 /**
  * Class: GrammarSolver
  * 
- * GrammarSolver interprets a set of BNF rules from the 'lines' ArrayList
- * created in GrammarMain. If the contents of the 
+ * GrammarSolver interprets a set of BNF rules from the 'lines' ArrayList in
+ * GrammarMain. The program then uses these rules to generate random sentences
+ * or phrases based on the grammar definitions provided. The GrammarSolver
+ * class provides methods to check for non-terminals, retrieve all non-terminal
+ * symbols, and generate random occurrences of symbols based on the grammar rules.
  * 
  * @author Nathan Willett
  * @section 15596
@@ -16,24 +17,26 @@ public class GrammarSolver {
     private Map<String, String[]> grammarMap;
 
     /**
-     * This constructor initializes a new GrammarSolver object with the contents of
-     * the 'lines' ArrayList from GrammarMain.
+     * The constructor initializes a new GrammarSolver object with the contents of
+     * the 'lines' ArrayList.
      * 
-     * @param rules
+     * @param rules a list of strings representing BNF grammar rules
+     * @throws IllegalArgumentException if the rules list is null, empty, contains
+     *         invalid rule formats, or contains duplicate non-terminal definitions
      */
     public GrammarSolver(List<String> rules) {
         if (rules == null || rules.isEmpty()) {
             throw new IllegalArgumentException("Rules list cannot be null or empty");
         }
 
-        grammarMap = new HashMap<>();
+        grammarMap = new HashMap<>(); // initialize grammarMap
         for (String rule : rules) {
-            String[] parts = rule.split("::=");
+            String[] parts = rule.split("::="); // split the rule at the separator
             if (parts.length != 2) {
                 throw new IllegalArgumentException("Invalid rule format");
             }
-            String nonTerminal = parts[0].trim();
-            String[] expansions = parts[1].split("[|]");
+            String nonTerminal = parts[0].trim(); // get the non terminal part 
+            String[] expansions = parts[1].split("[|]"); // get the expansions, separated with a pipe '|'
             if (grammarMap.containsKey(nonTerminal)) {
                 throw new IllegalArgumentException("Duplicate rule for non-terminal: " + nonTerminal);
             }
@@ -42,10 +45,11 @@ public class GrammarSolver {
     }
 
     /**
-     * 
-     * 
-     * @param symbol
-     * @return
+     * Checks if the given symbol is a non-terminal in the grammar.
+     *
+     * @param symbol the symbol to check
+     * @return true if the symbol is a non-terminal, false otherwise
+     * @throws IllegalArgumentException if the symbol is null or empty
      */
     public boolean contains(String symbol) {
         if (symbol == null || symbol.isEmpty()) {
@@ -55,19 +59,20 @@ public class GrammarSolver {
     }
 
     /**
-     * 
-     * 
-     * @return
+     * Returns all non-terminal symbols in the grammar as a set of strings.
+     *
+     * @return a set of all non-terminal symbols
      */
     public Set<String> getSymbols() {
         return grammarMap.keySet();
     }
 
     /**
-     * 
-     * 
-     * @param symbol
-     * @return
+     * Generates a random occurrence of the given symbol according to the grammar rules.
+     *
+     * @param symbol the symbol to generate
+     * @return a randomly generated occurrence of the symbol
+     * @throws IllegalArgumentException if the symbol is null or empty
      */
     public String generate(String symbol) {
         if (symbol == null || symbol.isEmpty()) {
@@ -78,12 +83,12 @@ public class GrammarSolver {
         }
 
         Random random = new Random();
-        String[] expansions = grammarMap.get(symbol);
+        String[] expansions = grammarMap.get(symbol); // Get expansions for the non-terminal
         String expansion = expansions[random.nextInt(expansions.length)].trim();
-        String[] tokens = expansion.split("\\s+");
+        String[] tokens = expansion.split("\\s+"); // Split the expansion into tokens
         StringBuilder result = new StringBuilder();
         for (String token : tokens) {
-            result.append(generate(token)).append(" ");
+            result.append(generate(token)).append(" "); // Recursively generate each token
         }
         return result.toString().trim();
     }

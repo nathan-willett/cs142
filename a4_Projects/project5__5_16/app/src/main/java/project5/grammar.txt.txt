@@ -1,0 +1,11 @@
+<s> ::= <np> <vp>
+<np> ::= <dp> <adjp> <n> | <pn>
+<dp> ::= every | some
+<adjp> ::= <adj> | <adj> <adjp>
+<adj> ::= old | young | tall | short | clever | lazy | brave
+<n> ::= wizard | dragon | knight | castle | village | forest | river
+<pn> ::= Merlin | Arthur | Morgana | Lancelot | Guinevere
+<vp> ::= <tv> <np> | <iv>
+<tv> ::= protects | seeks | finds | builds | destroys
+<iv> ::= rests | dreams | sleeps | awakens
+
