@@ -1,4 +1,4 @@
-//package a4_Projects.project6__5_23.app.src.main.java.project6;
+package a4_Projects.project6__5_23.app.src.main.java.project6;
 
 import java.util.Scanner;
 
