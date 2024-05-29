@@ -15,5 +15,34 @@ public class TrafficSimulation {
         initializeVehicles();
     }
 
-   
+    private void initializeVehicles() {
+        int gridHeight = grid.getHeight();
+
+        // Add initial vehicles to the grid
+       
+    }
+
+    public void start() {
+        isRunning = true;
+        // Start the simulation loop
+    }
+
+    public void pause() {
+        isRunning = false;
+    }
+
+    public void reset() {
+        // Reset the simulation
+    }
+
+
+    public void update() {
+    
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
+
+    }
 }
