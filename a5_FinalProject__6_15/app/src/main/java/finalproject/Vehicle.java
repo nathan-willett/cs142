@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.awt.Color;
 import java.util.Random;
 

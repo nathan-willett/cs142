@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -143,6 +145,7 @@ public class TrafficGUI extends JFrame {
                 int cellWidth = getWidth() / grid.length; // Calculate the width of each cell
                 int cellHeight = getHeight() / grid[0].length; // Calculate the height of each cell
 
+                
                 for (int i = 0; i < grid.length; i++) {
                     for (int j = 0; j < grid[i].length; j++) {
                         if (grid[i][j] != null) {

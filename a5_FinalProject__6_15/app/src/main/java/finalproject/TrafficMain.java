@@ -5,7 +5,6 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
  * simulation. It creates an instance of TrafficSimulation and TrafficGUI
  * to run and display the simulation.
  */
-
 public class TrafficMain {
 
     /**

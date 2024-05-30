@@ -1,5 +1,6 @@
-import java.awt.Color;
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
 
+import java.awt.Color;
 
 /**
  * The TrafficSimulation class manages the traffic simulation.
@@ -7,13 +8,11 @@ import java.awt.Color;
  * and manages the vehicles and traffic lights.
  */
 
-
 public class TrafficSimulation {
     private Grid grid; // The grid representing the simulation area
     private boolean isRunning; // Indicates whether the simulation is currently running
     private int vehicleSpeed; // The speed of the vehicles in the simulation
     private int trafficLightTiming; // The timing for the traffic lights in the simulation
-
 
     /**
      * Constructs a TrafficSimulation with specified width, height, and traffic light timing.
@@ -30,14 +29,12 @@ public class TrafficSimulation {
         initializeVehicles();
     }
 
-
     /**
      * Starts the traffic simulation.
      */
     public void start() {
         isRunning = true;
     }
-
 
     /**
      * Pauses the traffic simulation.
@@ -46,7 +43,6 @@ public class TrafficSimulation {
         isRunning = false;
     }
 
-
     /**
      * Resets the traffic simulation by reinitializing the grid and vehicles.
      */
@@ -54,7 +50,6 @@ public class TrafficSimulation {
         grid = new Grid(grid.getWidth(), grid.getHeight(), trafficLightTiming);
         initializeVehicles();
     }
-
 
     /**
      * Updates the state of the simulation.
@@ -66,7 +61,6 @@ public class TrafficSimulation {
         }
     }
 
-
     /**
      * Sets the vehicle speed.
      *
@@ -75,7 +69,6 @@ public class TrafficSimulation {
     public void setVehicleSpeed(int speed) {
         this.vehicleSpeed = speed;
     }
-
 
     /**
      * Sets the timing for traffic lights.
@@ -87,7 +80,6 @@ public class TrafficSimulation {
         grid.setTrafficLightTiming(timing);
     }
 
-
     /**
      * Gets the grid of the simulation.
      *
@@ -96,7 +88,6 @@ public class TrafficSimulation {
     public Grid getGrid() {
         return grid;
     }
-
 
     /**
      * Gets the vehicle speed.
@@ -107,7 +98,6 @@ public class TrafficSimulation {
         return vehicleSpeed;
     }
 
-
     /**
      * Gets the traffic light timing.
      *
@@ -116,7 +106,6 @@ public class TrafficSimulation {
     public int getTrafficLightTiming() {
         return trafficLightTiming;
     }
-
 
     /**
      * Initializes the vehicles on the grid.
