@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -6,7 +8,6 @@ import java.util.Random;
  * Represents a grid for the traffic simulation, consisting of RoadCell and
  * IntersectionCell objects.
  */
-
 public class Grid {
     private Cell[][] grid; // 2D array representing the grid
     private int width; // Width of the grid
@@ -23,7 +24,6 @@ public class Grid {
      * @param trafficLightTiming Initial timing for traffic lights in
      *                           IntersectionCells.
      */
-
     public Grid(int width, int height, int trafficLightTiming) {
         this.width = width;
         this.height = height;
@@ -40,7 +40,6 @@ public class Grid {
      *
      * @param trafficLightTiming The timing for traffic lights in IntersectionCells.
      */
-
     private void initializeGrid(int trafficLightTiming) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -60,7 +59,6 @@ public class Grid {
      *
      * @param timing The new timing for traffic lights.
      */
-
     public void setTrafficLightTiming(int timing) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -78,7 +76,6 @@ public class Grid {
      * @param x       The x-coordinate of the vehicle's initial position.
      * @param y       The y-coordinate of the vehicle's initial position.
      */
-
     public void addVehicle(Vehicle vehicle, int x, int y) {
         vehicles.add(vehicle);
         vehicle.move(grid[x][y]);
@@ -87,7 +84,6 @@ public class Grid {
     /**
      * Updates the state of the grid and all cells within it.
      */
-
     public void updateGrid() {
         // Update each vehicle in the grid
         for (Vehicle vehicle : vehicles) {
@@ -106,7 +102,6 @@ public class Grid {
      *
      * @return The grid.
      */
-
     public Cell[][] getGrid() {
         return grid;
     }
@@ -116,7 +111,6 @@ public class Grid {
      *
      * @return The list of vehicles.
      */
-
     public List<Vehicle> getVehicles() {
         return vehicles;
     }
@@ -126,7 +120,6 @@ public class Grid {
      *
      * @return The width of the grid.
      */
-
     public int getWidth() {
         return width;
     }
@@ -136,7 +129,6 @@ public class Grid {
      *
      * @return The height of the grid.
      */
-
     public int getHeight() {
         return height;
     }

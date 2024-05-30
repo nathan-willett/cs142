@@ -10,15 +10,12 @@ import javax.swing.event.ChangeListener;
  * It includes controls for adjusting vehicle speed and traffic light timing,
  * and displays the grid with vehicles and intersections.
  */
-
-
 public class TrafficGUI extends JFrame {
     private TrafficSimulation simulation;  // The traffic simulation instance
     private Timer timer;                   // Timer to update the simulation periodically
     private JSlider vehicleSpeedSlider;    // Slider to control the vehicle speed
     private JSlider trafficLightTimingSlider;  // Slider to control the traffic light timing
     private static final Color BACKGROUND_COLOR = Color.DARK_GRAY;  // Background color for the GUI
-
 
     /**
      * Constructs a TrafficGUI with the specified TrafficSimulation instance.
@@ -30,7 +27,6 @@ public class TrafficGUI extends JFrame {
         initialize(); // Initialize the GUI components
         initializeTimer(); // Initialize the timer for periodic updates
     }
-
 
     /**
      * Initializes the GUI components and layout.
@@ -56,7 +52,6 @@ public class TrafficGUI extends JFrame {
         gbc.gridwidth = 1; // Span 1 column
         controlPanel.add(vehicleSpeedLabel, gbc);
 
-
         // Vehicle speed slider
         vehicleSpeedSlider = new JSlider(1, 10, simulation.getVehicleSpeed());
         vehicleSpeedSlider.setMajorTickSpacing(1); // Set tick spacing for major ticks
@@ -74,7 +69,6 @@ public class TrafficGUI extends JFrame {
         gbc.gridy = 0; // Row 0
         gbc.gridwidth = 2; // Span 2 colums
         controlPanel.add(vehicleSpeedSlider, gbc);
-
 
         // Label for traffic light timing slider
         JLabel trafficLightTimingLabel = new JLabel("Traffic Light Timing (seconds):");
@@ -101,7 +95,6 @@ public class TrafficGUI extends JFrame {
         gbc.gridwidth = 2; // Span 2 columns
         controlPanel.add(trafficLightTimingSlider, gbc);
 
-
         // Start button
         JButton startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
@@ -114,7 +107,6 @@ public class TrafficGUI extends JFrame {
         gbc.gridy = 2; // Row 2
         gbc.gridwidth = 1; // Span 1 column
         controlPanel.add(startButton, gbc);
-
 
         // Pause button
         JButton pauseButton = new JButton("Pause");
@@ -141,7 +133,6 @@ public class TrafficGUI extends JFrame {
         gbc.gridy = 2;  // Row 2
         gbc.gridwidth = 1;  // Span 1 column
         controlPanel.add(resetButton, gbc);
-
 
         // Panel for displaying the grid
         JPanel gridPanel = new JPanel() {
@@ -194,7 +185,6 @@ public class TrafficGUI extends JFrame {
 
         setVisible(true);
     }
-
 
     /**
      * Initializes the timer for periodic simulation updates.
