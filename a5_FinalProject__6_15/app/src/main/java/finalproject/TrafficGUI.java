@@ -27,6 +27,8 @@ public class TrafficGUI {
 
     private class TrackPanel extends JPanel {
         private TrafficSimulation simulation;
+        private static final int LANE_COUNT = 5;
+        private static final int LANE_WIDTH = 20;
 
         public TrackPanel(TrafficSimulation simulation) {
             this.simulation = simulation;
@@ -44,22 +46,35 @@ public class TrafficGUI {
         }
 
         private void drawTrack(Graphics g) {
-            List<Cell> trackCells = simulation.getTrack().getTrackCells();
-            for (Cell cell : trackCells) {
-                int x = cell.getX() * 20;
-                int y = cell.getY() * 20;
-                g.setColor(cell.getColor());
-                g.fillRect(x, y, 20, 20);
+            int centerX = getWidth() / 2;
+            int centerY = getHeight() / 2;
+            int baseRadiusX = getWidth() / 3;
+            int baseRadiusY = getHeight() / 3;
+
+            g.setColor(Color.BLACK); // Color of the track lines
+
+            for (int lane = 0; lane < LANE_COUNT; lane++) {
+                int radiusX = baseRadiusX - (lane * LANE_WIDTH);
+                int radiusY = baseRadiusY - (lane * LANE_WIDTH);
+                drawOval(g, centerX, centerY, radiusX, radiusY);
             }
 
             List<Vehicle> vehicles = simulation.getTrack().getVehicles();
             for (Vehicle vehicle : vehicles) {
                 Cell currentCell = vehicle.getCurrentCell();
-                int x = currentCell.getX() * 20;
-                int y = currentCell.getY() * 20;
+                int index = simulation.getTrack().getTrackCells().indexOf(currentCell);
+                double angle = 2 * Math.PI * index / simulation.getTrack().getTrackCells().size();
+                int radiusX = baseRadiusX - (vehicle.getLane() * LANE_WIDTH);
+                int radiusY = baseRadiusY - (vehicle.getLane() * LANE_WIDTH);
+                int x = centerX + (int) (radiusX * Math.cos(angle));
+                int y = centerY + (int) (radiusY * Math.sin(angle));
                 g.setColor(vehicle.getColor());
-                g.fillRect(x, y, 20, 20);
+                g.fillOval(x - 5, y - 5, 10, 10); // Adjust size as needed
             }
+        }
+
+        private void drawOval(Graphics g, int centerX, int centerY, int radiusX, int radiusY) {
+            g.drawOval(centerX - radiusX, centerY - radiusY, 2 * radiusX, 2 * radiusY);
         }
     }
 }

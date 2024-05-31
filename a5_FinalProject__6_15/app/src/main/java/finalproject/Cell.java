@@ -24,5 +24,6 @@ public abstract class Cell {
         return color;
     }
 
+    // what is this?
     public abstract void update();
 }

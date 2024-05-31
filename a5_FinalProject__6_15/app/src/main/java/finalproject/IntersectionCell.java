@@ -5,11 +5,13 @@ import java.awt.Color;
 public class IntersectionCell extends Cell {
     private int timing;
     private boolean lightGreen;
+    private int timeCounter; // Track the time passed
 
     public IntersectionCell(int x, int y, Color color, int timing) {
         super(x, y, color);
         this.timing = timing;
         this.lightGreen = true;
+        this.timeCounter = 0;
     }
 
     public void setTiming(int timing) {
@@ -26,7 +28,11 @@ public class IntersectionCell extends Cell {
 
     @Override
     public void update() {
-        // Logic to change light state based on timing
+        timeCounter++;
+        if (timeCounter >= timing) {
+            changeLight();
+            timeCounter = 0; // Reset the counter after changing the light
+        }
     }
 
     @Override

@@ -18,13 +18,13 @@ public class Track {
 
     private void initializeTrack() {
         for (int i = 0; i < trackLength; i++) {
-            trackCells.add(new RoadCell(i, 0, Color.GRAY)); // Assuming a simple linear layout for now
+            trackCells.add(new RoadCell(i, 0, Color.GRAY));
         }
 
         // Place traffic lights at equal intervals
-        int interval = trackLength / 4; // Adjust as needed for the number of traffic lights
+        int interval = trackLength / 4;
         for (int i = 0; i < trackLength; i += interval) {
-            trackCells.set(i, new IntersectionCell(i, 0, Color.RED, 5)); // Timing example
+            trackCells.set(i, new IntersectionCell(i, 0, Color.RED, 50)); // Adjust timing as needed
         }
     }
 

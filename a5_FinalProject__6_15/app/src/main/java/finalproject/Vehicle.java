@@ -6,11 +6,13 @@ public abstract class Vehicle {
     private Cell currentCell;
     private Color color;
     private int currentPosition;
+    private int lane;
 
-    public Vehicle(Cell initialCell, Color color) {
+    public Vehicle(Cell initialCell, Color color, int lane) {
         this.currentCell = initialCell;
         this.color = color;
         this.currentPosition = 0; // Initial position on the track
+        this.lane = lane;
     }
 
     public void move(Cell newCell) {
@@ -28,5 +30,9 @@ public abstract class Vehicle {
 
     public Color getColor() {
         return color;
+    }
+
+    public int getLane() {
+        return lane;
     }
 }
