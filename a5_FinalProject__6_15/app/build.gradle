@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = '_finalproject.App'
+    mainClass = 'finalproject.TrafficMain'
 }
 
 tasks.named('test') {
