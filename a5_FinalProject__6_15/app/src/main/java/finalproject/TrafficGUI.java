@@ -2,12 +2,17 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class TrafficGUI {
     private TrafficSimulation simulation;
     private JFrame frame;
     private JPanel trackPanel;
+    private JButton startButton;
+    private JButton stopButton;
+    private Timer timer;
 
     public TrafficGUI(TrafficSimulation simulation) {
         this.simulation = simulation;
@@ -22,6 +27,41 @@ public class TrafficGUI {
         trackPanel = new TrackPanel(simulation);
         frame.add(trackPanel, BorderLayout.CENTER);
 
+        JPanel controlPanel = new JPanel();
+        startButton = new JButton("Start");
+        stopButton = new JButton("Stop");
+
+        controlPanel.add(startButton);
+        controlPanel.add(stopButton);
+
+        frame.add(controlPanel, BorderLayout.SOUTH);
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (timer != null && timer.isRunning()) {
+                    timer.stop();
+                }
+                timer = new Timer(100, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        simulation.update();
+                        trackPanel.repaint();
+                    }
+                });
+                timer.start();
+            }
+        });
+
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (timer != null && timer.isRunning()) {
+                    timer.stop();
+                }
+            }
+        });
+
         frame.setVisible(true);
     }
 
@@ -32,11 +72,6 @@ public class TrafficGUI {
 
         public TrackPanel(TrafficSimulation simulation) {
             this.simulation = simulation;
-            Timer timer = new Timer(100, e -> {
-                simulation.update();
-                repaint();
-            });
-            timer.start();
         }
 
         @Override
@@ -64,10 +99,10 @@ public class TrafficGUI {
                 Cell currentCell = vehicle.getCurrentCell();
                 int index = simulation.getTrack().getTrackCells().indexOf(currentCell);
                 double angle = 2 * Math.PI * index / simulation.getTrack().getTrackCells().size();
-                int radiusX = baseRadiusX - (vehicle.getLane() * LANE_WIDTH);
-                int radiusY = baseRadiusY - (vehicle.getLane() * LANE_WIDTH);
-                int x = centerX + (int) (radiusX * Math.cos(angle));
-                int y = centerY + (int) (radiusY * Math.sin(angle));
+                int laneOffsetX = (int) (baseRadiusX - ((vehicle.getLane() - .5) * LANE_WIDTH)); // Shift by 2 lanes outward
+                int laneOffsetY = (int) (baseRadiusY - ((vehicle.getLane() - .5) * LANE_WIDTH)); // Shift by 2 lanes outward
+                int x = centerX + (int) (laneOffsetX * Math.cos(angle));
+                int y = centerY + (int) (laneOffsetY * Math.sin(angle));
                 g.setColor(vehicle.getColor());
                 g.fillOval(x - 5, y - 5, 10, 10); // Adjust size as needed
             }

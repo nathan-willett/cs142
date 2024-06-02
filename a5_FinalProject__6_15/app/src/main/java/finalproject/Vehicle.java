@@ -11,7 +11,7 @@ public abstract class Vehicle {
     public Vehicle(Cell initialCell, Color color, int lane) {
         this.currentCell = initialCell;
         this.color = color;
-        this.currentPosition = 0; // Initial position on the track
+        this.currentPosition = lane * (initialCell.getX() / 5); // Adjust initial position
         this.lane = lane;
     }
 
