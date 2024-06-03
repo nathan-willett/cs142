@@ -3,7 +3,6 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 public class TrafficSimulation {
     private Track track;
     private int vehicleSpeed;
-    private int trafficLightTiming;
 
     public TrafficSimulation(int trackLength) {
         track = new Track(trackLength);
@@ -27,10 +26,6 @@ public class TrafficSimulation {
 
     public void setVehicleSpeed(int speed) {
         this.vehicleSpeed = speed;
-    }
-
-    public void setTrafficLightTiming(int timing) {
-        this.trafficLightTiming = timing;
     }
 
     public Track getTrack() {

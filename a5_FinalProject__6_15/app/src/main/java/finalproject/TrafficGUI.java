@@ -42,7 +42,7 @@ public class TrafficGUI {
                 if (timer != null && timer.isRunning()) {
                     timer.stop();
                 }
-                timer = new Timer(100, new ActionListener() {
+                timer = new Timer(100, new ActionListener() { // Update interval set to 100 milliseconds
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         simulation.update();
@@ -67,8 +67,6 @@ public class TrafficGUI {
 
     private class TrackPanel extends JPanel {
         private TrafficSimulation simulation;
-        private static final int LANE_COUNT = 5;
-        private static final int LANE_WIDTH = 20;
 
         public TrackPanel(TrafficSimulation simulation) {
             this.simulation = simulation;
@@ -83,33 +81,26 @@ public class TrafficGUI {
         private void drawTrack(Graphics g) {
             int centerX = getWidth() / 2;
             int centerY = getHeight() / 2;
-            int baseRadiusX = getWidth() / 3;
-            int baseRadiusY = getHeight() / 3;
+            int radius = Math.min(getWidth(), getHeight()) / 3; // Ensure it's a circle
 
             g.setColor(Color.BLACK); // Color of the track lines
 
-            for (int lane = 0; lane < LANE_COUNT; lane++) {
-                int radiusX = baseRadiusX - (lane * LANE_WIDTH);
-                int radiusY = baseRadiusY - (lane * LANE_WIDTH);
-                drawOval(g, centerX, centerY, radiusX, radiusY);
-            }
+            drawCircle(g, centerX, centerY, radius);
 
             List<Vehicle> vehicles = simulation.getTrack().getVehicles();
             for (Vehicle vehicle : vehicles) {
                 Cell currentCell = vehicle.getCurrentCell();
                 int index = simulation.getTrack().getTrackCells().indexOf(currentCell);
                 double angle = 2 * Math.PI * index / simulation.getTrack().getTrackCells().size();
-                int laneOffsetX = (int) (baseRadiusX - ((vehicle.getLane() - .5) * LANE_WIDTH)); // Shift by 2 lanes outward
-                int laneOffsetY = (int) (baseRadiusY - ((vehicle.getLane() - .5) * LANE_WIDTH)); // Shift by 2 lanes outward
-                int x = centerX + (int) (laneOffsetX * Math.cos(angle));
-                int y = centerY + (int) (laneOffsetY * Math.sin(angle));
+                int x = centerX + (int) (radius * Math.cos(angle));
+                int y = centerY + (int) (radius * Math.sin(angle));
                 g.setColor(vehicle.getColor());
                 g.fillOval(x - 5, y - 5, 10, 10); // Adjust size as needed
             }
         }
 
-        private void drawOval(Graphics g, int centerX, int centerY, int radiusX, int radiusY) {
-            g.drawOval(centerX - radiusX, centerY - radiusY, 2 * radiusX, 2 * radiusY);
+        private void drawCircle(Graphics g, int centerX, int centerY, int radius) {
+            g.drawOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
         }
     }
 }

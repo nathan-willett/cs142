@@ -21,6 +21,9 @@ public class Track {
             trackCells.add(new RoadCell(i, 0, Color.GRAY));
         }
 
+        // Debug output to verify number of track cells
+        System.out.println("Number of track cells: " + trackCells.size());
+
         // Place traffic lights at equal intervals
         int interval = trackLength / 4;
         for (int i = 0; i < trackLength; i += interval) {
@@ -50,6 +53,8 @@ public class Track {
         if (position < trackLength && trackCells.get(position) instanceof RoadCell) {
             vehicles.add(vehicle);
             vehicle.move(trackCells.get(position));
+        } else {
+            System.out.println("Failed to add vehicle at position: " + position); // Debug output
         }
     }
 }
