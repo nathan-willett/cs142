@@ -14,16 +14,17 @@ public class Car extends Vehicle {
 
         // Calculate the next position
         int nextPosition = (currentPosition + 1) % track.getTrackCells().size();
-        System.out.println("Current position: " + currentPosition + ", Next position: " + nextPosition);
 
-        // Check if the next position is occupied
-        if (!isPositionOccupied(track, nextPosition)) {
+        // Check if the next position is occupied by another vehicle
+        boolean isNextPositionOccupied = isPositionOccupied(track, nextPosition);
+        
+        // If the next position is occupied, slow down
+        if (isNextPositionOccupied) {
+            speed = Math.max(speed - deceleration, 0);
+        } else {
             // Move to the next position
             currentPosition = nextPosition;
             move(track.getTrackCells().get(currentPosition));
-        } else {
-            // Handle collision (e.g., slow down or stop)
-            speed = Math.max(speed - deceleration, 0);
         }
 
         // Debug output to track the cars
