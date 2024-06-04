@@ -7,37 +7,18 @@ import java.util.List;
 public class Track {
     private List<Cell> trackCells;
     private List<Vehicle> vehicles;
-    private int trackLength;
 
-    public Track(int trackLength) {
-        this.trackLength = trackLength;
-        this.trackCells = new ArrayList<>();
-        this.vehicles = new ArrayList<>();
-        initializeTrack();
-    }
+    public Track(int numCells, int greenDuration, int yellowDuration, int redDuration) {
+        trackCells = new ArrayList<>();
+        vehicles = new ArrayList<>();
 
-    private void initializeTrack() {
-        for (int i = 0; i < trackLength; i++) {
-            trackCells.add(new RoadCell(i, 0, Color.GRAY));
-        }
-
-        // Debug output to verify number of track cells
-        System.out.println("Number of track cells: " + trackCells.size());
-
-        // Place traffic lights at equal intervals
-        int interval = trackLength / 4;
-        for (int i = 0; i < trackLength; i += interval) {
-            trackCells.set(i, new IntersectionCell(i, 0, Color.RED, 50)); // Adjust timing as needed
-        }
-    }
-
-    public void updateTrack() {
-        for (Cell cell : trackCells) {
-            cell.update();
-        }
-
-        for (Vehicle vehicle : vehicles) {
-            vehicle.update(this);
+        for (int i = 0; i < numCells; i++) {
+            // Assuming road cells and intersection cells are placed alternately
+            if (i % 10 == 0) {
+                trackCells.add(new IntersectionCell(i, i, greenDuration, yellowDuration, redDuration));
+            } else {
+                trackCells.add(new RoadCell(i, i, Color.GRAY)); // Pass x and y coordinates
+            }
         }
     }
 
@@ -49,12 +30,21 @@ public class Track {
         return vehicles;
     }
 
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
+
     public void addVehicle(Vehicle vehicle, int position) {
-        if (position < trackLength && trackCells.get(position) instanceof RoadCell) {
-            vehicles.add(vehicle);
-            vehicle.move(trackCells.get(position));
-        } else {
-            System.out.println("Failed to add vehicle at position: " + position); // Debug output
+        vehicle.setCurrentPosition(position); // Ensure the vehicle starts at the specified position
+        vehicles.add(vehicle);
+    }
+
+    public void update() {
+        for (Cell cell : trackCells) {
+            cell.update();
+        }
+        for (Vehicle vehicle : vehicles) {
+            vehicle.update(this);
         }
     }
 }

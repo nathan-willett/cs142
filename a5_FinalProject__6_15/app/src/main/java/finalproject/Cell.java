@@ -24,6 +24,9 @@ public abstract class Cell {
         return color;
     }
 
-    // what is this?
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public abstract void update();
 }

@@ -1,38 +1,43 @@
 package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
 
+import java.util.List;
+
 public class TrafficSimulation {
     private Track track;
-    private int vehicleSpeed;
 
-    public TrafficSimulation(int trackLength) {
-        track = new Track(trackLength);
+    public TrafficSimulation(int numCells) {
+        int greenDuration = 30; // Duration of green light
+        int yellowDuration = 5; // Duration of yellow light
+        int redDuration = 30; // Duration of red light
+
+        track = new Track(numCells, greenDuration, yellowDuration, redDuration);
     }
 
-    public void start() {
-        // Logic to start the simulation
+    public void addVehicle(Vehicle vehicle) {
+        track.addVehicle(vehicle);
     }
 
-    public void pause() {
-        // Logic to pause the simulation
-    }
-
-    public void reset() {
-        // Logic to reset the simulation
+    public List<Vehicle> getVehicles() {
+        return track.getVehicles();
     }
 
     public void update() {
-        track.updateTrack();
-    }
-
-    public void setVehicleSpeed(int speed) {
-        this.vehicleSpeed = speed;
+        track.update();
     }
 
     public Track getTrack() {
         return track;
     }
 
-    public int getVehicleSpeed() {
-        return vehicleSpeed;
+    public void start(TrafficGUI gui) {
+        for (int i = 0; i < 100; i++) {
+            update();
+            gui.repaint();
+            try {
+                Thread.sleep(100); // Add delay for better visualization
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

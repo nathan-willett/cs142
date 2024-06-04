@@ -52,6 +52,6 @@ public class TrafficMain {
         }
 
         gui.initialize();
-        simulation.start();
+        simulation.start(gui);
     }
 }

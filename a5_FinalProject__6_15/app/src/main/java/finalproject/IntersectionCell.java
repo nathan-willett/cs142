@@ -3,40 +3,42 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 import java.awt.Color;
 
 public class IntersectionCell extends Cell {
-    private int timing;
-    private boolean lightGreen;
-    private int timeCounter; // Track the time passed
+    private int timer;
+    private TrafficSignalState currentState;
+    private int greenDuration;
+    private int yellowDuration;
+    private int redDuration;
 
-    public IntersectionCell(int x, int y, Color color, int timing) {
-        super(x, y, color);
-        this.timing = timing;
-        this.lightGreen = true;
-        this.timeCounter = 0;
-    }
-
-    public void setTiming(int timing) {
-        this.timing = timing;
-    }
-
-    public void changeLight() {
-        lightGreen = !lightGreen;
-    }
-
-    public boolean isLightGreen() {
-        return lightGreen;
+    public IntersectionCell(int x, int y, int greenDuration, int yellowDuration, int redDuration) {
+        super(x, y, Color.GREEN); // Initial color is green
+        this.greenDuration = greenDuration;
+        this.yellowDuration = yellowDuration;
+        this.redDuration = redDuration;
+        this.timer = greenDuration; // Start with green duration
+        this.currentState = TrafficSignalState.GREEN;
     }
 
     @Override
     public void update() {
-        timeCounter++;
-        if (timeCounter >= timing) {
-            changeLight();
-            timeCounter = 0; // Reset the counter after changing the light
+        timer--;
+        if (timer <= 0) {
+            if (currentState == TrafficSignalState.GREEN) {
+                currentState = TrafficSignalState.YELLOW;
+                timer = yellowDuration;
+                setColor(Color.YELLOW);
+            } else if (currentState == TrafficSignalState.YELLOW) {
+                currentState = TrafficSignalState.RED;
+                timer = redDuration;
+                setColor(Color.RED);
+            } else if (currentState == TrafficSignalState.RED) {
+                currentState = TrafficSignalState.GREEN;
+                timer = greenDuration;
+                setColor(Color.GREEN);
+            }
         }
     }
 
-    @Override
-    public Color getColor() {
-        return lightGreen ? Color.GREEN : Color.RED;
+    private enum TrafficSignalState {
+        GREEN, YELLOW, RED
     }
 }
