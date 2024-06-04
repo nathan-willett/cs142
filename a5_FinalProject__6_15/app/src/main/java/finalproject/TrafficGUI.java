@@ -38,10 +38,19 @@ public class TrafficGUI {
         List<Cell> trackCells = simulation.getTrack().getTrackCells();
         List<Vehicle> vehicles = simulation.getVehicles();
 
-        // Draw grid for visualization
-        for (Cell cell : trackCells) {
-            g.setColor(Color.LIGHT_GRAY);
-            g.drawRect(cell.getX() * 20, cell.getY() * 20, 20, 20);
+        // Draw circular track line
+        double radius = 200;
+        double centerX = 400;
+        double centerY = 300;
+        g.setColor(Color.LIGHT_GRAY);
+        for (int i = 0; i < trackCells.size(); i++) {
+            double angle1 = 2 * Math.PI * i / trackCells.size();
+            double angle2 = 2 * Math.PI * (i + 1) / trackCells.size();
+            int x1 = (int) (centerX + radius * Math.cos(angle1));
+            int y1 = (int) (centerY + radius * Math.sin(angle1));
+            int x2 = (int) (centerX + radius * Math.cos(angle2));
+            int y2 = (int) (centerY + radius * Math.sin(angle2));
+            g.drawLine(x1, y1, x2, y2);
         }
 
         // Draw vehicles
@@ -49,7 +58,9 @@ public class TrafficGUI {
             int position = vehicle.getCurrentPosition();
             Cell cell = trackCells.get(position);
             g.setColor(vehicle.getColor());
-            g.fillRect(cell.getX() * 20, cell.getY() * 20, 20, 20);
+            g.fillOval(cell.getX() - 5, cell.getY() - 5, 10, 10); // Draw the vehicle as a small circle
+            // Debug output to verify vehicle drawing
+            System.out.println("Drawing vehicle at: x=" + cell.getX() + ", y=" + cell.getY());
         }
     }
 }

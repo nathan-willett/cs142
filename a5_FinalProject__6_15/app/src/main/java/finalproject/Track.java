@@ -26,6 +26,9 @@ public class Track {
             } else {
                 trackCells.add(new RoadCell(x, y, Color.GRAY));
             }
+
+            // Debug output to verify cell coordinates
+            System.out.println("Cell " + i + ": x=" + x + ", y=" + y);
         }
         System.out.println("Track initialized with " + trackCells.size() + " cells.");
     }
