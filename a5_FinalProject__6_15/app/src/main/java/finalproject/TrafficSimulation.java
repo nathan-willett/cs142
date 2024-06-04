@@ -31,6 +31,7 @@ public class TrafficSimulation {
 
     public void start(TrafficGUI gui) {
         for (int i = 0; i < 100; i++) {
+            System.out.println("Simulation step: " + i);
             update();
             gui.repaint();
             try {

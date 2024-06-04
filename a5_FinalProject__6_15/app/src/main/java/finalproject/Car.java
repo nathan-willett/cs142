@@ -14,6 +14,7 @@ public class Car extends Vehicle {
 
         // Calculate the next position
         int nextPosition = (currentPosition + 1) % track.getTrackCells().size();
+        System.out.println("Current position: " + currentPosition + ", Next position: " + nextPosition);
 
         // Check if the next position is occupied
         if (!isPositionOccupied(track, nextPosition)) {

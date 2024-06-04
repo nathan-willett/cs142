@@ -35,12 +35,21 @@ public class TrafficGUI {
     }
 
     private void drawSimulation(Graphics g) {
+        List<Cell> trackCells = simulation.getTrack().getTrackCells();
         List<Vehicle> vehicles = simulation.getVehicles();
+
+        // Draw grid for visualization
+        for (Cell cell : trackCells) {
+            g.setColor(Color.LIGHT_GRAY);
+            g.drawRect(cell.getX() * 20, cell.getY() * 20, 20, 20);
+        }
+
+        // Draw vehicles
         for (Vehicle vehicle : vehicles) {
             int position = vehicle.getCurrentPosition();
-            Cell cell = simulation.getTrack().getTrackCells().get(position);
+            Cell cell = trackCells.get(position);
             g.setColor(vehicle.getColor());
-            g.fillRect(cell.getX() * 10, cell.getY() * 10, 10, 10);
+            g.fillRect(cell.getX() * 20, cell.getY() * 20, 20, 20);
         }
     }
 }
