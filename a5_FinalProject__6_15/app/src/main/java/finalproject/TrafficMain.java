@@ -21,6 +21,9 @@ public class TrafficMain {
         double slowerAcceleration = 0.05;
         double slowerDeceleration = 0.05;
 
+        // Array of colors for the cars
+        Color[] colors = { Color.RED, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK, Color.GRAY, Color.DARK_GRAY, Color.GREEN };
+
         // Add vehicles to the simulation at evenly spaced intervals
         for (int i = 0; i < numberOfCars; i++) {
             int position = i * spacing;
@@ -39,13 +42,12 @@ public class TrafficMain {
             }
 
             Car car;
-
-            if (i == 0) { // The first car will be the slower car
+            if (i == 9) { // The last car will be the slower green car
                 car = new Car(startCell, Color.GREEN, position, slowerMaxSpeed, slowerAcceleration, slowerDeceleration);
                 System.out.println("Initialized green car at position: " + position); // Debug output
             } else {
-                car = new Car(startCell, Color.BLUE, position, standardMaxSpeed, standardAcceleration, standardDeceleration);
-                System.out.println("Initialized blue car at position: " + position); // Debug output
+                car = new Car(startCell, colors[i], position, standardMaxSpeed, standardAcceleration, standardDeceleration);
+                System.out.println("Initialized car at position: " + position); // Debug output
             }
 
             simulation.getTrack().addVehicle(car, position);

@@ -2,12 +2,18 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class TrafficGUI {
     private TrafficSimulation simulation;
     private JFrame frame;
     private JPanel panel;
+    private JButton startButton;
+    private JButton pauseButton;
+    private Timer timer;
+    private boolean isRunning;
 
     public TrafficGUI(TrafficSimulation simulation) {
         this.simulation = simulation;
@@ -19,11 +25,55 @@ public class TrafficGUI {
                 drawSimulation(g);
             }
         };
+
         panel.setPreferredSize(new Dimension(800, 600));
-        frame.add(panel);
+        frame.add(panel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel();
+        startButton = new JButton("Start");
+        pauseButton = new JButton("Pause");
+
+        buttonPanel.add(startButton);
+        buttonPanel.add(pauseButton);
+
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
+        isRunning = false;
+
+        // Timer to update and repaint the simulation
+        timer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                simulation.update();
+                repaint();
+            }
+        });
+
+        // Start button action
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!isRunning) {
+                    timer.start();
+                    isRunning = true;
+                }
+            }
+        });
+
+        // Pause button action
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (isRunning) {
+                    timer.stop();
+                    isRunning = false;
+                }
+            }
+        });
     }
 
     public void initialize() {
@@ -54,13 +104,16 @@ public class TrafficGUI {
         }
 
         // Draw vehicles
+        int vehicleSize = 20; // Size of the vehicle icons
         for (Vehicle vehicle : vehicles) {
             int position = vehicle.getCurrentPosition();
             Cell cell = trackCells.get(position);
             g.setColor(vehicle.getColor());
-            g.fillOval(cell.getX() - 5, cell.getY() - 5, 10, 10); // Draw the vehicle as a small circle
-            // Debug output to verify vehicle drawing
-            System.out.println("Drawing vehicle at: x=" + cell.getX() + ", y=" + cell.getY());
+            if (vehicle.getColor().equals(Color.GREEN)) {
+                g.fillRect(cell.getX() - vehicleSize / 2, cell.getY() - vehicleSize / 2, vehicleSize, vehicleSize); // Draw the green car as a square
+            } else {
+                g.fillOval(cell.getX() - vehicleSize / 2, cell.getY() - vehicleSize / 2, vehicleSize, vehicleSize); // Draw other cars as circles
+            }
         }
     }
 }
