@@ -4,6 +4,9 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
  * The TrafficMain class contains the main method to start the traffic
  * simulation. It creates an instance of TrafficSimulation and TrafficGUI
  * to run and display the simulation.
+ * 
+// [MermaidChart: efe2a417-e05c-4fe9-98f2-73ed76d1aa69]
+ * 
  */
 public class TrafficMain {
 
