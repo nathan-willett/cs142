@@ -3,19 +3,18 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 import java.awt.Color;
 
 /**
- * Represents a cell in the traffic simulation grid.
- * This is an abstract class that provides the basic
- * properties and methods for different types of cells.
+ * The Cell class represents a cell in the traffic simulation.
+ * It is an abstract class to be extended by specific cell types.
  */
 public abstract class Cell {
-    private int x; // The x-coordinate of the cell in the grid.
-    private int y; // The y-coordinate of the cell in the grid.
+    private int x;
+    private int y;
 
     /**
-     * Constructs a cell with specified coordinates.
+     * Constructs a Cell with the specified coordinates.
      *
-     * @param x The x-coordinate of the cell in the grid.
-     * @param y The y-coordinate of the cell in the grid.
+     * @param x the x-coordinate of the cell
+     * @param y the y-coordinate of the cell
      */
     public Cell(int x, int y) {
         this.x = x;
@@ -25,7 +24,7 @@ public abstract class Cell {
     /**
      * Returns the x-coordinate of the cell.
      *
-     * @return The x-coordinate of the cell.
+     * @return the x-coordinate of the cell
      */
     public int getX() {
         return x;
@@ -34,7 +33,7 @@ public abstract class Cell {
     /**
      * Returns the y-coordinate of the cell.
      *
-     * @return The y-coordinate of the cell.
+     * @return the y-coordinate of the cell
      */
     public int getY() {
         return y;
@@ -42,26 +41,32 @@ public abstract class Cell {
 
     /**
      * Updates the state of the cell.
-     * This method should be implemented by subclasses
-     * to provide specific update logic.
      */
     public abstract void update();
 
     /**
      * Returns the color of the cell.
-     * This method should be implemented by subclasses
-     * to return the specific color of the cell.
      *
-     * @return The color of the cell.
+     * @return the color of the cell
      */
     public abstract Color getColor();
 
     /**
-     * Returns a string representation of the cell.
-     * This method should be implemented by subclasses to return a specific string
-     * representation of the cell.
+     * Sets the timing for the cell. 
      *
-     * @return A string representing the cell.
+     * @param timing the new timing value
      */
-    public abstract String toString();
+    public void setTiming(int timing) {
+        
+    }
+
+    /**
+     * Determines if a vehicle can enter this cell. 
+     *
+     * @param vehicle the vehicle trying to enter
+     * @return true if the vehicle can enter, false otherwise
+     */
+    public boolean canEnter(Vehicle vehicle) {
+        return true; // Default implementation, can be overridden by subclasses
+    }
 }

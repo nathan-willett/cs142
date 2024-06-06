@@ -1,36 +1,31 @@
 package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
 
 import java.awt.Color;
-import java.util.Random;
 
 /**
- * Represents a vehicle in the traffic simulation.
- * The vehicle moves randomly within a grid, which
- * contains different types of cells (road and intersection).
- * Vehicles can only move to adjacent cells that are instances of `RoadCell`.
+ * The Vehicle class represents a vehicle in the traffic simulation.
+ * This is an abstract class that defines the behavior for all vehicles.
  */
-
-public class Vehicle {
-    private Cell currentCell; // The current cell where the vehicle is located.
-    private Color color; // The color of the vehicle.
-    private Random random; // Random number generator for determining the vehicle's movement direction.
+public abstract class Vehicle {
+    private Cell currentCell;
+    private Color color;
+    private int gridHeight; // The height of the grid for boundary checks
 
     /**
-     * Constructs a vehicle with a starting cell and a specified color.
+     * Constructs a Vehicle with the specified initial cell and color.
      *
-     * @param startCell The starting cell for the vehicle.
-     * @param color     The color of the vehicle.
+     * @param initialCell the initial cell of the vehicle
+     * @param color the color of the vehicle
      */
-    public Vehicle(Cell startCell, Color color) {
-        this.currentCell = startCell;
+    public Vehicle(Cell initialCell, Color color) {
+        this.currentCell = initialCell;
         this.color = color;
-        this.random = new Random();
     }
 
     /**
      * Moves the vehicle to a new cell.
      *
-     * @param newCell The cell to move the vehicle to.
+     * @param newCell the new cell to move to
      */
     public void move(Cell newCell) {
         this.currentCell = newCell;
@@ -39,7 +34,7 @@ public class Vehicle {
     /**
      * Returns the current cell of the vehicle.
      *
-     * @return The current cell of the vehicle.
+     * @return the current cell of the vehicle
      */
     public Cell getCurrentCell() {
         return currentCell;
@@ -48,49 +43,38 @@ public class Vehicle {
     /**
      * Returns the color of the vehicle.
      *
-     * @return The color of the vehicle.
+     * @return the color of the vehicle
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     * Updates the vehicle's position on the grid.
-     * The vehicle moves to an adjacent cell in a random direction (up, down, left,
-     * or right).
-     * The vehicle only moves if the next cell is a RoadCell.
+     * Calculates the next move direction and distance.
      *
-     * @param grid The grid in which the vehicle is moving.
+     * @return an array with two elements: the direction (0 for no move, 1 for right, -1 for left)
+     *         and the distance to move.
      */
-    public void update(Grid grid) {
-        int x = currentCell.getX();
-        int y = currentCell.getY();
-        int direction = random.nextInt(4); // 0: up, 1: down, 2: left, 3: right
+    public abstract int[] getNextMove();
 
-        int newX = x;
-        int newY = y;
+    /**
+     * Updates the state of the vehicle.
+     */
+    public abstract void update();
 
-        // Determine the new coordinates based on the random direction
-        switch (direction) {
-            case 0:
-                newY = (y - 1 + grid.getHeight()) % grid.getHeight(); // Move up
-                break;
-            case 1:
-                newY = (y + 1) % grid.getHeight(); // Move down
-                break;
-            case 2:
-                newX = (x - 1 + grid.getWidth()) % grid.getWidth(); // Move left
-                break;
-            case 3:
-                newX = (x + 1) % grid.getWidth(); // Move right
-                break;
-        }
-
-        Cell nextCell = grid.getGrid()[newX][newY];
-        // Only move if the next cell is a RoadCell
-        if (nextCell instanceof RoadCell) {
-            move(nextCell);
-        }
+    /**
+     * Sets the grid height for boundary checks.
+     */
+    public void setGridHeight(int gridHeight) {
+        this.gridHeight = gridHeight;
     }
 
+    /**
+     * Gets the grid height.
+     *
+     * @return the grid height
+     */
+    public int getGridHeight() {
+        return gridHeight;
+    }
 }

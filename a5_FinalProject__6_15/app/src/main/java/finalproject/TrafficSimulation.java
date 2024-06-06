@@ -4,29 +4,30 @@ import java.awt.Color;
 
 /**
  * The TrafficSimulation class manages the traffic simulation.
- * It initializes the grid, handles the state of the simulation,
+ * It set up the grid, handles the state of the simulation,
  * and manages the vehicles and traffic lights.
  */
-
 public class TrafficSimulation {
     private Grid grid; // The grid representing the simulation area
-    private boolean isRunning; // Indicates whether the simulation is currently running
-    private int vehicleSpeed; // The speed of the vehicles in the simulation
-    private int trafficLightTiming; // The timing for the traffic lights in the simulation
+    private boolean isRunning; // Indicates the simulation is running
+    private int vehicleSpeed; // Speed of the vehicles 
+    private int trafficLightTiming; // Timing for the traffic lights 
 
     /**
-     * Constructs a TrafficSimulation with specified width, height, and traffic light timing.
+     * Constructors of TrafficSimulation with width, height, 
+     * and traffic light timing.
      *
      * @param width the width of the grid
      * @param height the height of the grid
      * @param trafficLightTiming the timing for traffic lights
+     * 
      */
     public TrafficSimulation(int width, int height, int trafficLightTiming) {
         this.grid = new Grid(width, height, trafficLightTiming);
         this.isRunning = false;
         this.vehicleSpeed = 5; // Default vehicle speed
         this.trafficLightTiming = trafficLightTiming;
-        initializeVehicles();
+        setVehicles();
     }
 
     /**
@@ -44,11 +45,11 @@ public class TrafficSimulation {
     }
 
     /**
-     * Resets the traffic simulation by reinitializing the grid and vehicles.
+     * Resets the traffic simulation by restart the grid and vehicles.
      */
     public void reset() {
         grid = new Grid(grid.getWidth(), grid.getHeight(), trafficLightTiming);
-        initializeVehicles();
+        setVehicles();
     }
 
     /**
@@ -108,14 +109,15 @@ public class TrafficSimulation {
     }
 
     /**
-     * Initializes the vehicles on the grid.
-     * Adds a specified number of vehicles at random positions on the grid.
+     * sets the vehicles on the grid.
+     * Adds vehicles at random positions on the grid.
      */
-    private void initializeVehicles() {
-        for (int i = 0; i < 20; i++) {  // Adding 20 cars
+    private void setVehicles() {
+        for (int i = 0; i < 20; i++) { // Adding 20 cars
             int x = (int) (Math.random() * grid.getWidth());
             int y = (int) (Math.random() * grid.getHeight());
             Vehicle vehicle = new Car(grid.getGrid()[x][y], Color.BLUE);
+            vehicle.setGridHeight(grid.getHeight()); // Set the grid height for the vehicle
             grid.addVehicle(vehicle, x, y);
         }
     }

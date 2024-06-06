@@ -3,43 +3,42 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 import java.awt.Color;
 
 /**
- * Represents a car in the traffic simulation.
- * 
+ * The Car class represents a car in the traffic simulation.
+ * It extends the Vehicle class and defines the specific behavior for a car.
  */
 public class Car extends Vehicle {
+    private int direction; // 1 for down, -1 for up
 
     /**
-     * Constructs a car with a starting cell and a specified color.
+     * Constructors of Car with the initial cell and color.
      *
-     * @param startCell The starting cell for the car. Represents the initial
-     *                  position of the car in the grid.
-     * @param color     The color of the car. Used for graphical representation.
+     * @param initialCell the initial cell of the car
+     * @param color the color of the car
      */
-    public Car(Cell startCell, Color color) {
-        super(startCell, color); // Call the constructor of the Vehicle class
+    public Car(Cell initialCell, Color color) {
+        super(initialCell, color);
+        this.direction = 1; // Start by moving down
     }
 
     /**
-     * Updates the car's position on the grid.
-     * The car moves to an adjacent cell if the next cell is a `RoadCell`.
-     * This method overrides the update method in the Vehicle class to ensure that
-     * the car follows the same update logic as a general vehicle.
+     * Calculates the next move direction and distance for the car.
      *
-     * @param grid The grid in which the car is moving. Provides the layout and
-     *             state of the simulation.
+     * @return an array with two elements: the direction (0 for no move, 1 for down, -1 for up)
+     *         and the distance to move.
      */
-    public void update(Grid grid) {
-        super.update(grid); // Call the update method of the Vehicle class
+    public int[] getNextMove() {
+        Cell currentCell = getCurrentCell();
+        int nextY = currentCell.getY() + direction;
+        if (nextY >= getGridHeight() || nextY < 0) {
+            direction *= -1; // Reverse direction when reaching top or bottom edge
+        }
+        return new int[]{0, direction};  // Move vertically
     }
 
     /**
-     * Returns the color of the car.
-     * This method overrides the getColor method in the Vehicle class to ensure that
-     * the car's color can be accessed in the same way as for a general vehicle.
-     *
-     * @return The color of the car.
+     * Updates the state of the car.
      */
-    public Color getColor() {
-        return super.getColor();
+    public void update() {
+        // Additional update logic if necessary
     }
 }
