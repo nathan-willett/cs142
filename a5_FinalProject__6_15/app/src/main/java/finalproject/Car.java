@@ -34,11 +34,4 @@ public class Car extends Vehicle {
         }
         return new int[]{0, direction};  // Move vertically
     }
-
-    /**
-     * Updates the state of the car.
-     */
-    public void update() {
-        // Additional update logic if necessary
-    }
 }

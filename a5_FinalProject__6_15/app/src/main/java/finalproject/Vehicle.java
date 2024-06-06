@@ -58,11 +58,6 @@ public abstract class Vehicle {
     public abstract int[] getNextMove();
 
     /**
-     * Updates the state of the vehicle.
-     */
-    public abstract void update();
-
-    /**
      * Sets the grid height for boundary checks.
      */
     public void setGridHeight(int gridHeight) {
