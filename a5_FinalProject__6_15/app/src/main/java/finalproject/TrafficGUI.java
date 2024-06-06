@@ -5,12 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
  * TrafficGUI is graphical interface for the traffic simulation.
  * It sets up the window, control panel, and grid display, and handles user inputs.
  */
-
 public class TrafficGUI extends JFrame {
     private TrafficSimulation simulation;
     private Timer timer; // Timer for updating simulation
@@ -24,7 +22,6 @@ public class TrafficGUI extends JFrame {
     private int maxSpeed = 100;     
     private int minTiming = 1;      
     private int maxTiming = 60;    
-
 
     /**
      * Constructors for TrafficGUI with TrafficSimulation.
@@ -58,7 +55,6 @@ public class TrafficGUI extends JFrame {
             }
         });
         controlPanel.add(startButton);
-
 
         // Add Pause button to pause the simulation
         JButton pauseButton = new JButton("Pause");
@@ -110,13 +106,11 @@ public class TrafficGUI extends JFrame {
         // Add the set speed button to the control panel
         controlPanel.add(setSpeedButton);
 
-
         // Add Timing input and button
         controlPanel.add(new JLabel("Timing:"));
         // Create a text field for entering the traffic light timing
         timingField = new JTextField(String.valueOf(simulation.getTrafficLightTiming()), 3);
         controlPanel.add(timingField); // Add the timing text field on controlPanel
-
 
         // Create a button to set the traffic light timing
         JButton setTimingButton = new JButton("Set Timing");
@@ -157,7 +151,6 @@ public class TrafficGUI extends JFrame {
         setVisible(true); // Make the frame visible
     }
 
-
     /**
      * Draws the grid and vehicles on the grid panel.
      *
@@ -194,7 +187,6 @@ public class TrafficGUI extends JFrame {
         }
     }
 
-
     /**
      * Sets up and starts the timer for updating the simulation.
      */
@@ -212,7 +204,6 @@ public class TrafficGUI extends JFrame {
         // Start the new timer
         timer.start();
     }
-
 
     /**
      * Resets the simulation to the default values and updates the display.
