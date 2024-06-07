@@ -5,10 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  * TrafficGUI is graphical interface for the traffic simulation.
  * It sets up the window, control panel, and grid display, and handles user inputs.
  */
+
 public class TrafficGUI extends JFrame {
     private TrafficSimulation simulation;
     private Timer timer; // Timer for updating simulation

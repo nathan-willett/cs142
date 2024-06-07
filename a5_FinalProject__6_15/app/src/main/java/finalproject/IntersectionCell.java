@@ -3,9 +3,9 @@ package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out bef
 import java.awt.Color;
 
 /**
- * The IntersectionCell class represents an intersection cell
- * in the traffic simulation. It extends the Cell class and 
- * manages the traffic light state.
+ * The IntersectionCell class represents an intersection cell 
+ * in the traffic simulation.
+ * It extends the Cell class and manages the traffic light state.
  */
 public class IntersectionCell extends Cell {
     private int timing;
@@ -65,4 +65,5 @@ public class IntersectionCell extends Cell {
     public Color getColor() {
         return isGreen ? Color.GREEN : Color.RED;
     }
+
 }

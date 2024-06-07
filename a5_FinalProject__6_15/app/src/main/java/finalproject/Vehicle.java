@@ -10,6 +10,7 @@ public abstract class Vehicle {
     private Cell currentCell;
     private Color color;
     private int gridHeight; // The height of the grid for boundary checks
+    private int gridWidth;
 
     /**
      * Constructs a Vehicle with the specified initial cell and color.
@@ -28,7 +29,9 @@ public abstract class Vehicle {
      * @param newCell the new cell to move to
      */
     public void move(Cell newCell) {
+        currentCell.setOccupied(false);
         this.currentCell = newCell;
+        currentCell.setOccupied(true);
     }
 
     /**
@@ -58,10 +61,25 @@ public abstract class Vehicle {
     public abstract int[] getNextMove();
 
     /**
+     * Updates the state of the vehicle.
+     */
+    public abstract void update();
+
+    public abstract void getGridCell(Cell[][] gridCells);
+
+    /**
      * Sets the grid height for boundary checks.
      */
     public void setGridHeight(int gridHeight) {
         this.gridHeight = gridHeight;
+    }
+
+    /**
+     * Sets the grid width
+     */
+    public void setGridWidth(int gridWidth)
+    {
+        this.gridWidth = gridWidth;
     }
 
     /**
@@ -71,5 +89,15 @@ public abstract class Vehicle {
      */
     public int getGridHeight() {
         return gridHeight;
+    }
+
+    /**
+     * Gets the grid width.
+     *
+     * @return the grid width
+     */
+    public int getGridWidth() 
+    {
+        return gridWidth;
     }
 }

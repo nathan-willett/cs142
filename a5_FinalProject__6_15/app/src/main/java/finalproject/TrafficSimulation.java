@@ -20,13 +20,13 @@ public class TrafficSimulation {
      * @param width the width of the grid
      * @param height the height of the grid
      * @param trafficLightTiming the timing for traffic lights
-     * 
      */
     public TrafficSimulation(int width, int height, int trafficLightTiming) {
         this.grid = new Grid(width, height, trafficLightTiming);
         this.isRunning = false;
         this.vehicleSpeed = 5; // Default vehicle speed
         this.trafficLightTiming = trafficLightTiming;
+        //Pass in the grid
         setVehicles();
     }
 
@@ -116,9 +116,47 @@ public class TrafficSimulation {
         for (int i = 0; i < 20; i++) { // Adding 20 cars
             int x = (int) (Math.random() * grid.getWidth());
             int y = (int) (Math.random() * grid.getHeight());
-            Vehicle vehicle = new Car(grid.getGrid()[x][y], Color.BLUE);
-            vehicle.setGridHeight(grid.getHeight()); // Set the grid height for the vehicle
+
+            Vehicle vehicle = new Car(grid.getGrid()[x][y], getCarColor(i));
+            vehicle.setGridHeight(grid.getHeight());
+            vehicle.setGridWidth(grid.getWidth()); // Set the grid height for the vehicle
+            vehicle.getGridCell(grid.getGrid());
             grid.addVehicle(vehicle, x, y);
+        }
+    }
+
+    private Color getCarColor(int i)
+    {
+        int colorChoice = i % 13; // 13 for 13 colors in the swing library
+        switch (colorChoice) {
+            case 1:
+                return Color.BLACK;
+            case 2:
+                return Color.BLUE;
+            case 3:
+                return Color.MAGENTA;
+            case 4:
+                return Color.RED;
+            case 5:
+                return Color.WHITE;
+            case 6: 
+                return Color.LIGHT_GRAY;
+            case 7:
+                return Color.GRAY;
+            case 8:
+                return Color.DARK_GRAY;
+            case 9:
+                return Color.PINK;
+            case 10:
+                return Color.ORANGE;
+            case 11:
+                return Color.YELLOW;
+            case 12:
+                return Color.GREEN;
+            case 13:
+                return Color.CYAN;
+            default:
+                return Color.BLUE;
         }
     }
 }

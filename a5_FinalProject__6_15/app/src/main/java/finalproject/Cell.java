@@ -9,6 +9,7 @@ import java.awt.Color;
 public abstract class Cell {
     private int x;
     private int y;
+    private boolean isOccupied;
 
     /**
      * Constructs a Cell with the specified coordinates.
@@ -19,6 +20,7 @@ public abstract class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
+        this.isOccupied = false;
     }
 
     /**
@@ -39,6 +41,16 @@ public abstract class Cell {
         return y;
     }
 
+    public boolean isOccupied()
+    {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean state)
+    {
+        this.isOccupied = state;
+    }
+
     /**
      * Updates the state of the cell.
      */
@@ -52,16 +64,16 @@ public abstract class Cell {
     public abstract Color getColor();
 
     /**
-     * Sets the timing for the cell.
+     * Sets the timing for the cell. 
      *
      * @param timing the new timing value
      */
     public void setTiming(int timing) {
-
+        
     }
 
     /**
-     * Determines if a vehicle can enter this cell.
+     * Determines if a vehicle can enter this cell. 
      *
      * @param vehicle the vehicle trying to enter
      * @return true if the vehicle can enter, false otherwise
@@ -69,4 +81,5 @@ public abstract class Cell {
     public boolean canEnter(Vehicle vehicle) {
         return true; // Default implementation, can be overridden by subclasses
     }
+
 }
