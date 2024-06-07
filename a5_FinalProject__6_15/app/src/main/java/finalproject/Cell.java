@@ -52,16 +52,16 @@ public abstract class Cell {
     public abstract Color getColor();
 
     /**
-     * Sets the timing for the cell. 
+     * Sets the timing for the cell.
      *
      * @param timing the new timing value
      */
     public void setTiming(int timing) {
-        
+
     }
 
     /**
-     * Determines if a vehicle can enter this cell. 
+     * Determines if a vehicle can enter this cell.
      *
      * @param vehicle the vehicle trying to enter
      * @return true if the vehicle can enter, false otherwise

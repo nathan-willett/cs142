@@ -30,7 +30,7 @@ public class Grid {
     }
 
     /**
-     * Fills the grid with IntersectionCell and RoadCell objects 
+     * Fills the grid with IntersectionCell and RoadCell objects
      * based on a defined pattern
      */
     private void setGrid() {
@@ -38,11 +38,11 @@ public class Grid {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 // Start placing intersections from the third row and then every 5th row
-                if ((j - 2) % 5 == 0) { 
+                if ((j - 2) % 5 == 0) {
                     // Create an IntersectionCell at the current position
                     grid[i][j] = new IntersectionCell(i, j, trafficLightTiming);
                 } else {
-                     // Create a RoadCell at the current position
+                    // Create a RoadCell at the current position
                     grid[i][j] = new RoadCell(i, j);
                 }
             }
@@ -57,10 +57,10 @@ public class Grid {
         // Loop through each column and row in the grid
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                grid[i][j].update();  // Update the cell's state
+                grid[i][j].update(); // Update the cell's state
             }
         }
-         // Move the vehicles to their next positions 
+        // Move the vehicles to their next positions
         moveVehicles();
     }
 
