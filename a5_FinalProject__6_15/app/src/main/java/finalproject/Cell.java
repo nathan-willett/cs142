@@ -1,92 +1,179 @@
-import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * The Cell class represents a cell in the traffic simulation.
- * It is an abstract class to be extended by specific cell types.
+ * The Grid class represents the grid of cells in the traffic simulation.
+ * It maintains the state of the grid, including the cells and the vehicles,
+ * and provides methods to update the grid and manage vehicle movements.
+ * The grid consists of IntersectionCell and RoadCell objects based on a defined pattern.
+ * 
+ *  The main responsibilities of this class include:
+ * - Setting up the grid with specified dimensions and traffic light intervals.
+ * - Filling the grid with IntersectionCell and RoadCell objects.
+ * - Updating the state of the grid and its cells.
+ * - Managing the movement of vehicles and validating their moves.
+ * - Placing vehicles at designated locations on the grid.
+ * - Setting the timing for traffic lights in the grid.
  */
-public abstract class Cell {
-    private int x;
-    private int y;
-    private boolean isOccupied;
+public class Grid {
+    private Cell[][] grid; // 2D array of Cell objects
+    private List<Vehicle> vehicles;
+    private int width;
+    private int height;
+    private int trafficLightTiming;
+
 
     /**
-     * Constructs a Cell with the specified coordinates.
+     * Constructors of a Grid with width, height, and traffic light timing.
      *
-     * @param x the x-coordinate of the cell
-     * @param y the y-coordinate of the cell
+     * @param width              the width of the grid
+     * @param height             the height of the grid
+     * @param trafficLightTiming the timing for traffic lights
      */
-    public Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
-        this.isOccupied = false;
+    public Grid(int width, int height, int trafficLightTiming) {
+        this.width = width;
+        this.height = height;
+        this.trafficLightTiming = trafficLightTiming;
+        this.grid = new Cell[width][height];
+        this.vehicles = new ArrayList<>();
+        setGrid();
     }
 
     /**
-     * Returns the x-coordinate of the cell.
-     *
-     * @return the x-coordinate of the cell
+     * Fills the grid with IntersectionCell and RoadCell objects 
+     * based on a defined pattern
      */
-    public int getX() {
-        return x;
+    private void setGrid() {
+        // Loop through each column and row in the grid
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                // Place IntersectionCell in the middle columns and rows of the grid
+                if (j - (width / 2 - 2) == 0 || i - (height / 2) == 0) { 
+                    // Create an IntersectionCell at the current position
+                    grid[i][j] = new IntersectionCell(i, j, trafficLightTiming);
+                } else {
+                     // Create a RoadCell at the current position
+                    grid[i][j] = new RoadCell(i, j);
+                }
+            }
+        }
     }
 
     /**
-     * Returns the y-coordinate of the cell.
-     *
-     * @return the y-coordinate of the cell
+     * Updates the state of the grid.
+     * This method updates each cell in the grid and moves the vehicles
      */
-    public int getY() {
-        return y;
+    public void updateGrid() {
+        // Loop through each column and row in the grid
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                grid[i][j].update();  // Update the cell's state
+            }
+        }
+         // Move the vehicles to their next positions 
+        moveVehicles();
     }
 
     /**
-     * Checks if the cell is currently occupied
-     * 
-     * @return true if the cell is occupied, else false
+     * Moves the vehicles on the grid based on their next move.
      */
-    public boolean isOccupied() {
-        return isOccupied;
+    private void moveVehicles() {
+        // Loop through each vehicle in the vehicles list
+        for (Vehicle vehicle : vehicles) {
+            int[] nextPosition = vehicle.getNextMove();
+
+            // Check if the new position is a valid move
+            if (isValidMove(nextPosition[0], nextPosition[1], vehicle)) {
+                // Get the target cell at the new coordinates
+                Cell newCell = grid[nextPosition[0]][nextPosition[1]];
+                // Move the vehicle to the new cell
+                vehicle.move(newCell);
+            }
+        }
     }
 
     /**
-     * Sets the occupancy state of the cell.
+     * Checks if the move to the specified coordinates is valid.
      *
-     * @param state the new occupancy state of the cell (true if occupied, false if
-     *              not)
+     * @param x       the x-coordinate of the move
+     * @param y       the y-coordinate of the move
+     * @param vehicle the vehicle trying to move
+     * @return true if the move is valid, false otherwise
      */
-    public void setOccupied(boolean state) {
-        this.isOccupied = state;
+    private boolean isValidMove(int x, int y, Vehicle vehicle) {
+        // Check if the coordinates are within the grid boundaries
+        Cell targetCell = grid[x][y];
+
+        // Check if the coordinates are within the grid boundaries
+        if (x < 0 || x >= width || y < 0 || y >= height || targetCell.isOccupied()) {
+            return false;
+        } 
+        // Get the target cell at the specified coordinates
+        // Check if the vehicle can enter the target cell
+        return targetCell.canEnter(vehicle);
     }
 
     /**
-     * Updates the state of the cell.
-     */
-    public abstract void update();
-
-    /**
-     * Returns the color of the cell.
+     * Sets the timing for traffic lights.
      *
-     * @return the color of the cell
+     * @param timing the new timing for traffic lights
      */
-    public abstract Color getColor();
-
-    /**
-     * Sets the timing for the cell.
-     *
-     * @param timing the new timing value
-     */
-    public void setTiming(int timing) {
-
+    public void setTrafficLightTiming(int timing) {
+        this.trafficLightTiming = timing;
+        // Loop through each cell in the grid
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                // Call the setTiming method on each cell
+                grid[i][j].setTiming(timing);
+            }
+        }
     }
 
     /**
-     * Determines if a vehicle can enter this cell.
+     * Returns the grid as a 2D array.
      *
-     * @param vehicle the vehicle trying to enter
-     * @return true if the vehicle can enter, false otherwise
+     * @return the grid as a 2D array
      */
-    public boolean canEnter(Vehicle vehicle) {
-        return true; // Default implementation, can be overridden by subclasses
+    public Cell[][] getGrid() {
+        return grid;
     }
 
+    /**
+     * Returns the list of vehicles in the grid.
+     *
+     * @return the list of vehicles in the grid
+     */
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    /**
+     * Returns the width of the grid.
+     *
+     * @return the width of the grid
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Returns the height of the grid.
+     *
+     * @return the height of the grid
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * Adds a vehicle to the grid at the specified coordinates.
+     *
+     * @param vehicle the vehicle to add
+     * @param x       the x-coordinate to place the vehicle
+     * @param y       the y-coordinate to place the vehicle
+     */
+    public void addVehicle(Vehicle vehicle, int x, int y) {
+        vehicles.add(vehicle);
+        vehicle.move(grid[x][y]);
+    }
 }
