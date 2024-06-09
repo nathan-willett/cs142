@@ -1,22 +1,13 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The Grid class represents the grid of cells in the traffic simulation.
- * It maintains the state of the grid, including the cells and the vehicles,
- * and provides methods to update the grid and manage vehicle movements.
- * The grid consists of IntersectionCell and RoadCell objects based on a defined pattern.
- * 
- *  The main responsibilities of this class include:
- * - Setting up the grid with specified dimensions and traffic light intervals.
- * - Filling the grid with IntersectionCell and RoadCell objects.
- * - Updating the state of the grid and its cells.
- * - Managing the movement of vehicles and validating their moves.
- * - Placing vehicles at designated locations on the grid.
- * - Setting the timing for traffic lights in the grid.
  */
 public class Grid {
-    private Cell[][] grid; // 2D array of Cell objects
+    private Cell[][] grid;
     private List<Vehicle> vehicles;
     private int width;
     private int height;
@@ -47,7 +38,7 @@ public class Grid {
         // Loop through each column and row in the grid
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                // Place IntersectionCell in the middle columns and rows of the grid
+                // Start placing intersections from the third row and then every 5th row
                 if (j - (width / 2 - 2) == 0 || i - (height / 2) == 0) { 
                     // Create an IntersectionCell at the current position
                     grid[i][j] = new IntersectionCell(i, j, trafficLightTiming);
@@ -81,6 +72,15 @@ public class Grid {
         // Loop through each vehicle in the vehicles list
         for (Vehicle vehicle : vehicles) {
             int[] nextPosition = vehicle.getNextMove();
+            // Horizontal direction to move (left or right)
+            // int directionX = nextMove[0];
+            // // Vertical direction to move (up or down)
+            // int directionY = nextMove[1];
+
+            // Cell currentCell = vehicle.getCurrentCell();
+            // // Calculate the new coordinates based on the current position and the direction
+            // int newX = currentCell.getX() + directionX;
+            // int newY = currentCell.getY() + directionY;
 
             // Check if the new position is a valid move
             if (isValidMove(nextPosition[0], nextPosition[1], vehicle)) {
@@ -104,7 +104,6 @@ public class Grid {
         // Check if the coordinates are within the grid boundaries
         Cell targetCell = grid[x][y];
 
-        // Check if the coordinates are within the grid boundaries
         if (x < 0 || x >= width || y < 0 || y >= height || targetCell.isOccupied()) {
             return false;
         } 

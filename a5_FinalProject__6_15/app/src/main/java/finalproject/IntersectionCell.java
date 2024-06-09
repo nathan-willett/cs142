@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.awt.Color;
 
 /**
@@ -29,10 +31,10 @@ public class IntersectionCell extends Cell {
      * Updates the state of the traffic light.
      */
     public void update() {
-        timer++; 
+        timer++;
         if (timer >= timing) {
-            isGreen = !isGreen; // Toggle traffic lights
-            timer = 0; // Reset timer
+            isGreen = !isGreen;
+            timer = 0;
         }
     }
 
@@ -60,7 +62,6 @@ public class IntersectionCell extends Cell {
      *
      * @return the color of the cell (green or red based on the traffic light state)
      */
-
     public Color getColor() {
         return isGreen ? Color.GREEN : Color.RED;
     }

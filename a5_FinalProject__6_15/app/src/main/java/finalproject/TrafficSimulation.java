@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.awt.Color;
 
 /**
@@ -18,7 +20,6 @@ public class TrafficSimulation {
      * @param width the width of the grid
      * @param height the height of the grid
      * @param trafficLightTiming the timing for traffic lights
-     * 
      */
     public TrafficSimulation(int width, int height, int trafficLightTiming) {
         this.grid = new Grid(width, height, trafficLightTiming);
@@ -113,29 +114,17 @@ public class TrafficSimulation {
      */
     private void setVehicles() {
         for (int i = 0; i < 20; i++) { // Adding 20 cars
-            // Generate random x and y coordinates within the bounds of the grid
             int x = (int) (Math.random() * grid.getWidth());
             int y = (int) (Math.random() * grid.getHeight());
 
-
-            // Creates a new Car object at the randomly generated coordinates with a color 
             Vehicle vehicle = new Car(grid.getGrid()[x][y], getCarColor(i));
-            // Set grid dimensions for the vehicle
-            vehicle.setGridHeight(grid.getHeight()); 
-            vehicle.setGridWidth(grid.getWidth()); 
-            // Set the grid cells for the vehicle
+            vehicle.setGridHeight(grid.getHeight());
+            vehicle.setGridWidth(grid.getWidth()); // Set the grid height for the vehicle
             vehicle.getGridCell(grid.getGrid());
-            // Add the vehicle to the grid
             grid.addVehicle(vehicle, x, y);
         }
     }
 
-    /**
-     * Returns a color for the car based on index. 
-     * 
-     * @param i the index to determine the color
-     * @return specific color for Cars
-     */
     private Color getCarColor(int i)
     {
         int colorChoice = i % 13; // 13 for 13 colors in the swing library

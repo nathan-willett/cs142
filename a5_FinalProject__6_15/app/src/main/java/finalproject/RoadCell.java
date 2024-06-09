@@ -1,3 +1,5 @@
+package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
+
 import java.awt.Color;
 
 /**
@@ -19,9 +21,8 @@ public class RoadCell extends Cell {
     /**
      * Updates the state of the road cell.
      */
-    
     public void update() {
-        // RoadCell specific update logic, if any
+        // No logic needed for road cell
     }
 
     /**
@@ -29,7 +30,6 @@ public class RoadCell extends Cell {
      *
      * @return the color of the cell (default road color)
      */
-    
     public Color getColor() {
         return Color.GRAY;
     }
