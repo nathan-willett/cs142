@@ -10,13 +10,13 @@ public abstract class Vehicle {
     private Cell currentCell;
     private Color color;
     private int gridHeight; // The height of the grid for boundary checks
-    private int gridWidth;
+    private int gridWidth; // The width of the grid for boundary checks
 
     /**
      * Constructs a Vehicle with the specified initial cell and color.
      *
      * @param initialCell the initial cell of the vehicle
-     * @param color the color of the vehicle
+     * @param color       the color of the vehicle
      */
     public Vehicle(Cell initialCell, Color color) {
         this.currentCell = initialCell;
@@ -55,7 +55,7 @@ public abstract class Vehicle {
     /**
      * Calculates the next move direction and distance.
      *
-     * @return an array with two elements: the direction (0 for no move, 1 for right, -1 for left)
+     * @return an array with two elements: the nextX, nextY
      *         and the distance to move.
      */
     public abstract int[] getNextMove();
@@ -65,20 +65,28 @@ public abstract class Vehicle {
      */
     public abstract void update();
 
+    /**
+     * Allows the vehicle to interact with the grid of cells.
+     * This method is implemented by subclasses of Vehicle to define
+     * how the vehicle retrieves or updates its position on the grid.
+     *
+     * @param gridCells a 2D array representing the grid of cells in the simulation.
+     *                  
+     *                  
+     */
     public abstract void getGridCell(Cell[][] gridCells);
 
     /**
-     * Sets the grid height for boundary checks.
+     * Sets the grid height for right/left boundary checks.
      */
     public void setGridHeight(int gridHeight) {
         this.gridHeight = gridHeight;
     }
 
     /**
-     * Sets the grid width
+     * Sets the grid width for top/bottom boundary checks.
      */
-    public void setGridWidth(int gridWidth)
-    {
+    public void setGridWidth(int gridWidth) {
         this.gridWidth = gridWidth;
     }
 
@@ -96,8 +104,7 @@ public abstract class Vehicle {
      *
      * @return the grid width
      */
-    public int getGridWidth() 
-    {
+    public int getGridWidth() {
         return gridWidth;
     }
 }
