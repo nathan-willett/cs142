@@ -20,16 +20,20 @@ public class RoadCell extends Cell {
 
     /**
      * Updates the state of the road cell.
+     * Override from Cell
      */
+    
     public void update() {
-        // No logic needed for road cell
+        // RoadCell specific update logic, if any
     }
 
     /**
      * Returns the color of the cell.
+     * Override from Cell
      *
      * @return the color of the cell (default road color)
      */
+    
     public Color getColor() {
         return Color.GRAY;
     }
