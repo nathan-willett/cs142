@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
  * TrafficGUI is graphical interface for the traffic simulation.
- * It sets up the window, control panel, and grid display, and handles user inputs.
+ * It sets up the window, control panel, and grid display, and handles user
+ * inputs.
  */
 
 public class TrafficGUI extends JFrame {
@@ -18,12 +18,12 @@ public class TrafficGUI extends JFrame {
     private JTextField timingField; // Text field for timing input
 
     // Default, minimum, and maximum values for speed and timing
-    private int defaultSpeed = 5;  
-    private int defaultTiming = 10;  
-    private int minSpeed = 1;       
-    private int maxSpeed = 100;     
-    private int minTiming = 1;      
-    private int maxTiming = 60;    
+    private int defaultSpeed = 5;
+    private int defaultTiming = 10;
+    private int minSpeed = 1;
+    private int maxSpeed = 100;
+    private int minTiming = 1;
+    private int maxTiming = 60;
 
     /**
      * Constructors for TrafficGUI with TrafficSimulation.
@@ -37,7 +37,15 @@ public class TrafficGUI extends JFrame {
     }
 
     /**
-     * Sets up the GUI window, including the control panel and grid panel.
+     * Create the GUI window, including the control panel and grid panel.
+     * This method configures the window properties, including the title, size,
+     * and default close operation. 
+     * 
+     * The control panel includes buttons for starting, pausing, and resetting
+     * the simulation, as well as input fields and buttons for adjusting
+     * vehicle speed and traffic light timing.
+     * 
+     * @throws NumberFormatException if the input for speed or timing is not a valid integer
      */
     private void window() {
         setTitle("Traffic Simulation");
@@ -79,7 +87,7 @@ public class TrafficGUI extends JFrame {
 
         // Add speed input and button
         controlPanel.add(new JLabel("Speed:"));
-        
+
         // Create a text field for entering the vehicle speed
         speedField = new JTextField(String.valueOf(simulation.getVehicleSpeed()), 3);
         controlPanel.add(speedField);
@@ -123,7 +131,8 @@ public class TrafficGUI extends JFrame {
                     // Check if the entered timing is within the allowed range
                     if (timing < minTiming || timing > maxTiming) {
                         // Show a message dialog if the timing is out of range
-                        JOptionPane.showMessageDialog(null, "Timing must be between " + minTiming + " and " + maxTiming);
+                        JOptionPane.showMessageDialog(null,
+                                "Timing must be between " + minTiming + " and " + maxTiming);
                     } else {
                         // Set the traffic light timing in the simulation
                         simulation.setTrafficLightTiming(timing);
@@ -154,7 +163,7 @@ public class TrafficGUI extends JFrame {
     }
 
     /**
-     * Draws the grid and vehicles on the grid panel.
+     * Draws the grid, traffic lights and vehicles on the grid panel.
      *
      * @param graphic the Graphics object for drawing
      */
@@ -181,7 +190,7 @@ public class TrafficGUI extends JFrame {
 
         // Draw vehicles
         for (Vehicle vehicle : simulation.getGrid().getVehicles()) {
-             // Get the current cell of the vehicle
+            // Get the current cell of the vehicle
             Cell cell = vehicle.getCurrentCell();
             // Get corlor and create oval shape object represents vehicles
             graph2D.setColor(vehicle.getColor());
@@ -196,7 +205,8 @@ public class TrafficGUI extends JFrame {
         if (timer != null) {
             timer.stop();
         }
-        // Create a Timer with an interval calculated as 1000 millisec devided by the vehicle speed
+        // Create a Timer with an interval calculated as 1000 millisec devided by the
+        // vehicle speed
         timer = new Timer(1000 / simulation.getVehicleSpeed(), new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 simulation.update();
@@ -217,7 +227,7 @@ public class TrafficGUI extends JFrame {
         simulation.setVehicleSpeed(defaultSpeed);
         simulation.setTrafficLightTiming(defaultTiming);
         simulation.reset(); // Reset the simulatoin to original state
-        setTimer(); 
+        setTimer();
         repaint(); // update display
     }
 }
