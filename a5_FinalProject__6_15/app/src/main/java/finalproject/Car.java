@@ -1,6 +1,7 @@
 package a5_FinalProject__6_15.app.src.main.java.finalproject; // comment out before submitting
 
 
+
 import java.awt.Color;
 
 /**
@@ -71,7 +72,8 @@ public class Car extends Vehicle {
 
     /**
      * Sets the reference to the grid cells.
-     * Implementd from the abstract Vehicle class
+     * Overried from Vehicle
+     * 
      * @param gridCells the 2D array of grid cells
      */
     public void getGridCell(Cell[][] gridCells) {
@@ -80,9 +82,10 @@ public class Car extends Vehicle {
 
     /**
      * Updates the state of the car.
-     * Impelemnted from the abtract Vehicle class
+     * Override from Vehicle
      */
     public void update() {
         // Additional update logic if necessary
     }
 }
+
