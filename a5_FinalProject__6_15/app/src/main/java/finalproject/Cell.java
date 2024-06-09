@@ -41,13 +41,22 @@ public abstract class Cell {
         return y;
     }
 
-    public boolean isOccupied()
-    {
+    /**
+     * Checks if the cell is currently occupied
+     * 
+     * @return true if the cell is occupied, else false
+     */
+    public boolean isOccupied() {
         return isOccupied;
     }
 
-    public void setOccupied(boolean state)
-    {
+    /**
+     * Sets the occupancy state of the cell.
+     *
+     * @param state the new occupancy state of the cell (true if occupied, false if
+     *              not)
+     */
+    public void setOccupied(boolean state) {
         this.isOccupied = state;
     }
 
@@ -64,16 +73,16 @@ public abstract class Cell {
     public abstract Color getColor();
 
     /**
-     * Sets the timing for the cell. 
+     * Sets the timing for the cell.
      *
      * @param timing the new timing value
      */
     public void setTiming(int timing) {
-        
+
     }
 
     /**
-     * Determines if a vehicle can enter this cell. 
+     * Determines if a vehicle can enter this cell.
      *
      * @param vehicle the vehicle trying to enter
      * @return true if the vehicle can enter, false otherwise
