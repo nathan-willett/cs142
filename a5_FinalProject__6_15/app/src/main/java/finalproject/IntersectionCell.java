@@ -18,7 +18,7 @@ public class IntersectionCell extends Cell {
      *
      * @param x      the x-coordinate of the cell
      * @param y      the y-coordinate of the cell
-     * @param timing the timing for the traffic light
+     * @param timing the timing for the traffic light to switch states
      */
     public IntersectionCell(int x, int y, int timing) {
         super(x, y);
@@ -29,18 +29,21 @@ public class IntersectionCell extends Cell {
 
     /**
      * Updates the state of the traffic light.
+     * Switches the light from green to red or red to 
+     * green based on the timing interval.
      */
     public void update() {
-        timer++;
+        timer++; 
         if (timer >= timing) {
-            isGreen = !isGreen;
-            timer = 0;
+            isGreen = !isGreen; // Toggle traffic lights
+            timer = 0; // Reset timer
         }
     }
 
     /**
      * Checks if a vehicle can enter this cell.
-     *
+     * Override from Cell
+     * 
      * @param vehicle the vehicle trying to enter
      * @return true if the traffic light is green, false otherwise
      */
@@ -59,7 +62,8 @@ public class IntersectionCell extends Cell {
 
     /**
      * Returns the color of the cell.
-     *
+     * Override from Cell
+     * 
      * @return the color of the cell (green or red based on the traffic light state)
      */
     public Color getColor() {
