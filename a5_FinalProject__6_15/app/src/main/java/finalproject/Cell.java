@@ -9,10 +9,12 @@ import java.awt.Color;
 public abstract class Cell {
     private int x;
     private int y;
-    private boolean isOccupied;
+    //This is true if a vehicle is present in the cell, false otherwise.
+    private boolean isOccupied; 
 
     /**
      * Constructs a Cell with the specified coordinates.
+     * Initally, the cell is not occupied.
      *
      * @param x the x-coordinate of the cell
      * @param y the y-coordinate of the cell
@@ -20,7 +22,8 @@ public abstract class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
-        this.isOccupied = false;
+        // Initialize the cell to be unoccupied.s
+        this.isOccupied = false; 
     }
 
     /**
