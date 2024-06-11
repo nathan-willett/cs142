@@ -1,3 +1,5 @@
+package project3__4_25;
+
 import java.awt.*;
 import java.util.Random;
 
