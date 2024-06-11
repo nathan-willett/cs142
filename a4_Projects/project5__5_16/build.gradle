@@ -7,7 +7,6 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    id 'java'
     id 'application'
 }
 
@@ -27,26 +26,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'SortedIntListTest'
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs = ['app/src/main/java']
-        }
-        resources {
-            srcDirs = ['app/src/main/resources']
-        }
-    }
-    test {
-        java {
-            srcDirs = ['app/src/test/java']
-        }
-        resources {
-            srcDirs = ['app/src/test/resources']
-        }
-    }
+    mainClass = ''
 }
 
 tasks.named('test') {
