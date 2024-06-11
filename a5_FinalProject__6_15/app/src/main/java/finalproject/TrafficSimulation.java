@@ -20,7 +20,6 @@ public class TrafficSimulation {
      * @param width the width of the grid
      * @param height the height of the grid
      * @param trafficLightTiming the timing for traffic lights
-     * 
      */
     public TrafficSimulation(int width, int height, int trafficLightTiming) {
         this.grid = new Grid(width, height, trafficLightTiming);
