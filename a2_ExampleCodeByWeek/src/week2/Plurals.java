@@ -35,7 +35,7 @@ public class Plurals {
     // reads words from a text file one at a time adding each to the end of a 
     // list that it returns. 
     // precondition: the file exists
-    public static ArrayIntList<String> readData() throws FileNotFoundException {
+    public static ArrayIntList readData() throws FileNotFoundException {
         ArrayList<String> words = new ArrayList();
         Scanner input = new Scanner(new File(FILE_NAME));
         

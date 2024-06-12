@@ -14,8 +14,8 @@ subprojects {
     
     version = '1.0'
 
-    sourceCompatibility = JavaVersion.VERSION_21 // Set source compatibility
-    targetCompatibility = JavaVersion.VERSION_21 // Set target compatibility
+    sourceCompatibility = JavaVersion.VERSION_17 // Set source compatibility
+    targetCompatibility = JavaVersion.VERSION_17 // Set target compatibility
 
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
