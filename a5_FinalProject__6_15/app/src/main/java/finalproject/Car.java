@@ -22,9 +22,6 @@ public class Car extends Vehicle {
      * @param initialCell the initial cell of the car
      * @param color       the color of the car
      */
-
-    // add a constructor parameter that takes a reference to a grid, and assign it
-    // to your new property
     public Car(Cell initialCell, Color color) {
         super(initialCell, color);
         this.directionY = 1; // Start by moving down along the Y-axis
@@ -85,7 +82,7 @@ public class Car extends Vehicle {
      * Override from Vehicle
      */
     public void update() {
-        // Additional update logic if necessary
+        // No logic needed for car update
     }
 }
 

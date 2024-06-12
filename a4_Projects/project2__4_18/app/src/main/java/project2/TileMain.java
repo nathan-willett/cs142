@@ -1,3 +1,5 @@
+package project2;
+
 // CS 142, Project 2, Window Manager
 // This provided main program uses your TileManager class.
 // It displays a DrawingPanel, creates several random Tile objects,

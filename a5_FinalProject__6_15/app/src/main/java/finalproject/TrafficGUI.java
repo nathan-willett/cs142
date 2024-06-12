@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
  * It sets up the window, control panel, and grid display, and handles user
  * inputs.
  */
-
 public class TrafficGUI extends JFrame {
     private TrafficSimulation simulation;
     private Timer timer; // Timer for updating simulation

@@ -1,3 +1,5 @@
+package project2;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;

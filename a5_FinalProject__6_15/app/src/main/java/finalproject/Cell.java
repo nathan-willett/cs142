@@ -80,9 +80,7 @@ public abstract class Cell {
      *
      * @param timing the new timing value
      */
-    public void setTiming(int timing) {
-
-    }
+    public void setTiming(int timing) {}
 
     /**
      * Determines if a vehicle can enter this cell.

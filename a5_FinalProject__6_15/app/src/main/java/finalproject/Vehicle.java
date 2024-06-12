@@ -70,9 +70,7 @@ public abstract class Vehicle {
      * This method is implemented by subclasses of Vehicle to define
      * how the vehicle retrieves or updates its position on the grid.
      *
-     * @param gridCells a 2D array representing the grid of cells in the simulation.
-     *                  
-     *                  
+     * @param gridCells a 2D array representing the grid of cells in the simulation.       
      */
     public abstract void getGridCell(Cell[][] gridCells);
 
