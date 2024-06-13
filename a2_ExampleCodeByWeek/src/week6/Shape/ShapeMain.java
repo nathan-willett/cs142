@@ -1,4 +1,5 @@
-package a2_ExampleCodeByWeek.src.week6.Shape;
+package week6.Shape;
+
 // Allison Obourn
 // CS 142, Spring 2024
 // Lecture 22

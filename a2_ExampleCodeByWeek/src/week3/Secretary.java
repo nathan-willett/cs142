@@ -1,13 +1,15 @@
-// Allison Obourn
-// CS 142, Spring 2024
-// Lecture 9
+// package week3;
 
-// Models secretaries, a worker type who know how to take dictation.
+// // Allison Obourn
+// // CS 142, Spring 2024
+// // Lecture 9
 
-public class Secretary extends Employee {
+// // Models secretaries, a worker type who know how to take dictation.
 
-	// takes dictation and prints out that dictation
-	public void takeDictation(String text) {
-		System.out.println("dictation " + text);
-	}
-}
+// public class Secretary extends Employee {
+
+// 	// takes dictation and prints out that dictation
+// 	public void takeDictation(String text) {
+// 		System.out.println("dictation " + text);
+// 	}
+// }

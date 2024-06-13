@@ -1,4 +1,6 @@
-package a2_ExampleCodeByWeek.src.week2;
+package week2;
+
+import java.util.*;
 
 // Allison Obourn
 // CS 142 - lecture 5
@@ -8,41 +10,38 @@ package a2_ExampleCodeByWeek.src.week2;
 // added. When an element is added in a spot where another element already
 // is, the element currently there and all after it move over to make room.
 // Likewise, when an element is removed the list adjusts itself so that
-// there are no empty indexes. 
+// there are no empty indexes.
 
-
-import java.util.*;
-
-public class ArrayIntList {
-   private int[] elementData;
+public class ArrayIntList<E> {
+   private Object[] elementData;
    private int size;
-   
+
    // a constant storing our initial size
    public static final int DEFAULT_CAPACITY = 10;
-   
+
    // Initializes a new empty list with the default capacity.
    public ArrayIntList() {
       this(DEFAULT_CAPACITY);
    }
-   
+
    // Initializes a new empty list with the specified initial capacity.
    // Pre: capacity > 0, throws IllegalArgumentException otherwise
    public ArrayIntList(int capacity) {
       if (capacity <= 0) {
          throw new IllegalArgumentException("capacity must be positive: " + capacity);
       }
-      elementData = new int[capacity];
+      elementData = new Object[capacity];
       size = 0;
    }
-   
+
    // Adds the given value to the end of the list.  
-   public void add(int value) {
+   public void add(E value) {
       add(size, value);
    }
-   
+
    // Inserts the given value into the list at the given index.
    // Pre: 0 <= index <= size, throws IndexOutOfBoundsException otherwise
-   public void add(int index, int value) {
+   public void add(int index, E value) {
       checkIndex(index, 0, size); // ok to add at size (end of list)
       ensureCapacity(size + 1);
       for(int i = size; i > index; i--) {
@@ -51,7 +50,7 @@ public class ArrayIntList {
       elementData[index] = value;
       size++;
    }
-   
+
    // Removes the value at the given index.
    // Pre: 0 <= index < size, throws IndexOutOfBoundsException otherwise
    public void remove(int index) {
@@ -62,29 +61,30 @@ public class ArrayIntList {
       size--;
    }
 
-   
    // Returns the value at the given index.
    // Pre: 0 <= index < size, throws IndexOutOfBoundsException otherwise
-   public int get(int index) {
-      return elementData[index];
+   public E get(int index) {
+      checkIndex(index, 0, size - 1);
+      return (E) elementData[index];
    }
-   
+
    // Sets the given index to store the given value.
    // Pre: 0 <= index < size, throws IndexOutOfBoundsException otherwise
-   public void set(int index, int value) {
+   public void set(int index, E value) {
+      checkIndex(index, 0, size - 1);
       elementData[index] = value;
    }
-   
+
    // returns the number of elements in the list
    public int size() {
       return size;
    }
-   
+
    // returns true if the list is empty and false otherwise
    public boolean isEmpty() {
       return size == 0;
    }
-   
+
    // Returns a String representation of the list consisting of the elements
    // in order, separated by commas and enclosed in square brackets.
    public String toString() {
@@ -98,7 +98,7 @@ public class ArrayIntList {
          return output + "]";
       }
    }
-   
+
    // Increases the capacity if needed to ensure that it can hold at
    // least the number of elements specified.
    // Post: elementData.length >= capacity
@@ -108,7 +108,7 @@ public class ArrayIntList {
          elementData = Arrays.copyOf(elementData, 2 * elementData.length);
       }
    }
-   
+
    // If the given index is outside of the given bounds, throws an
    // IndexOutOfBoundsException.
    private void checkIndex(int index, int min, int max) {

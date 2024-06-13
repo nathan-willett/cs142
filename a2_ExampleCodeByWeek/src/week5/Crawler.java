@@ -1,3 +1,5 @@
+package week5;
+
 // Allison Obourn
 // CS 142, Spring 2024
 // Lecture 19

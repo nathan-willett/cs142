@@ -1,4 +1,4 @@
-package a2_ExampleCodeByWeek.src.week2;
+package week2;
 
 // Allison Obourn
 // CS 123 - lecture 4
@@ -7,7 +7,6 @@ package a2_ExampleCodeByWeek.src.week2;
 // Creates an empty ArrayIntList, adds numbers 0 - 4 inclusive
 // in order smallest to greatest and then adds a number in the middle
 // finally, prints out the list.
-
 public class IntListMain {
     public static void main(String[] args) {
         ArrayIntList list = new ArrayIntList();
