@@ -26,7 +26,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'MountainPass'
+    mainClass = 'project4__5_8.MountainPass'
 }
 
 tasks.named('test') {

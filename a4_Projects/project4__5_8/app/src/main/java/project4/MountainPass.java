@@ -1,3 +1,5 @@
+package project4;
+
 import java.awt.*;
 import java.util.Scanner;
 import java.io.BufferedReader;

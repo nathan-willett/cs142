@@ -22,6 +22,8 @@ subprojects {
 
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'org.openjfx:javafx-controls:17'
+        implementation 'org.openjfx:javafx-fxml:17'
     }
 
     javafx {
